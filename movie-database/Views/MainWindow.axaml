@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:movie_database.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="960"
+        x:Class="movie_database.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="movie_database"
+	    WindowStartupLocation="CenterScreen">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	
+		<Button Command="{Binding SettingsCommand}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20">
+			<PathIcon Data="{StaticResource settings_regular}"/>
+		</Button>
+
+</Window>
