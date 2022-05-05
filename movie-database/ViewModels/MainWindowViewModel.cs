@@ -4,6 +4,7 @@ using movie_database.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Reactive.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -14,16 +15,19 @@ namespace movie_database.ViewModels
     {
         public MainWindowViewModel()
         {
-
-            SettingsCommand = ReactiveCommand.Create(() =>
-            {
-                var window = new SettingsWindow();
-                window.Show();
-            });
-
+            Movies.Add(new());
+            Movies.Add(new());
+            Movies.Add(new());
+            Movies.Add(new());
+            Movies.Add(new());
+            Movies.Add(new());
+            Movies.Add(new());
+            Movies.Add(new());
+            Movies.Add(new());
+            Movies.Add(new());
         }
 
-        public ICommand SettingsCommand { get; }
+        public ObservableCollection<MovieTVViewModel> Movies { get; } = new();
 
     }
 }

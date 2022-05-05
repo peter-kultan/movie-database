@@ -1,18 +1,14 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
 namespace movie_database.Views
 {
-    public partial class SettingsWindow : Window
+    public partial class MovieGridView : UserControl
     {
-        public SettingsWindow()
+        public MovieGridView()
         {
             InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
         }
 
         private void InitializeComponent()

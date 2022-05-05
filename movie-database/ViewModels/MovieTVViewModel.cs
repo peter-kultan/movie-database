@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace movie_database.ViewModels
 {
-    public class SettingsViewModel : ViewModelBase
+    public class MovieTVViewModel : ViewModelBase
     {
     }
 }

@@ -1,8 +1,6 @@
+using Avalonia;
 using Avalonia.Controls;
-using Avalonia.ReactiveUI;
-using movie_database.ViewModels;
-using ReactiveUI;
-using System.Threading.Tasks;
+using Avalonia.Markup.Xaml;
 
 namespace movie_database.Views
 {
@@ -11,6 +9,14 @@ namespace movie_database.Views
         public MainWindow()
         {
             InitializeComponent();
-        } 
+#if DEBUG
+            this.AttachDevTools();
+#endif
+        }
+
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
     }
 }
