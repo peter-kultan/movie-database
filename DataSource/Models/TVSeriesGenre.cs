@@ -4,18 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace movie_database.Models
+namespace DataSource.Models
 {
-    public class Movie
+    public class TVSeriesGenre
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Metadata Metadata { get; set; }
 
-        public Movie(string name, Metadata metadata)
+        public TVSeriesGenre(int id, string name)
         {
+            Id = id;
             Name = name;
-            Metadata = metadata;
+        }
+
+        public TVSeriesGenre()
+        {
         }
     }
 }
