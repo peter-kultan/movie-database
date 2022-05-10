@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DataSource
@@ -37,6 +38,29 @@ namespace DataSource
                 id => id,
                 genre => genre.Key,
                 (id, genre) => genre.Value).ToList();
+        }
+
+        public static string ParseName(string name)
+        {
+            name = name.ToLower()
+                .Replace('_', ' ')
+                .Replace('.', ' ')
+                .Replace('(', ' ')
+                .Replace(')', ' ');
+            Match r = Regex.Match(name, "\b\b{4}\b");
+            string yearFromName = r.Groups[r.Groups.Count - 1].Value;
+            return (!string.IsNullOrEmpty(yearFromName)) ? name.Substring(0, name.IndexOf(yearFromName)) : name;
+        }
+
+        public static void Init()
+        {
+            CreateCacheDir();
+        }
+
+        private static void CreateCacheDir()
+        {
+            Directory.CreateDirectory(".cache/Posters/");
+            Directory.CreateDirectory(".cache/BsckDrops/");
         }
     }
 }

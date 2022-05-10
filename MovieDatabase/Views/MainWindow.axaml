@@ -7,7 +7,7 @@
         x:Class="movie_database.Views.MainWindow"
         Title="MainWindow">
 	<Grid>
-		<Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10 10">
+		<Button VerticalAlignment="Top" Command="{Binding ShowSettings}" HorizontalAlignment="Right" Margin="10 10">
 			<PathIcon Data="{StaticResource settings_regular}"/>
 		</Button>
 		<TabControl HorizontalAlignment="Stretch">
@@ -16,7 +16,11 @@
 					<local:MovieGridView Margin="5 5"/>
 				</Panel>
 			</TabItem>
-			<TabItem Header="TV Series"></TabItem>
+			<TabItem Header="TV Series">
+				<Panel HorizontalAlignment="Stretch">
+					<local:TVSeriesGridView Margin="5 5"/>
+				</Panel>
+			</TabItem>
 		</TabControl>
 	</Grid>
 </Window>
