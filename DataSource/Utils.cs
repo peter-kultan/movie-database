@@ -60,7 +60,7 @@ namespace DataSource
         private static void CreateCacheDir()
         {
             Directory.CreateDirectory(".cache/Posters/");
-            Directory.CreateDirectory(".cache/BsckDrops/");
+            Directory.CreateDirectory(".cache/BackDrops/");
         }
     }
 }
