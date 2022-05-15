@@ -2,11 +2,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="200"
-        x:Class="movie_database.Views.SettingsWindow"
-        Title="SettingsWindow"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="500"
+        x:Class="movie_database.Views.SettingsWindowView"
+        Title="SettingsWindowView"
 		WindowStartupLocation="CenterOwner"
-		Width="200"
-		Height="200">
-  Welcome to Avalonia!
+		Width="500"
+		Height="500">
+	Welcome to Avalonia!
 </Window>

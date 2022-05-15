@@ -15,14 +15,13 @@ namespace DataSource.Repositories
 
         public TVSeriesDbContext() : base()
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlite(@"Data Source=movieDB.db");
+                .UseSqlite(@"Data Source=tvDB.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

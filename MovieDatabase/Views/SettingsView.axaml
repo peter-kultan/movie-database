@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="movie_database.Views.SettingsView">
+	<Grid>
+		<Button Command="{Binding BackCommand}" Content="Back" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Height="50" Width="65"/>
+		<TabControl TabStripPlacement="Left">
+			<TabItem Header="Repos">
+				<Grid>
+					<DataGrid Name="Repos" IsReadOnly="True" VerticalAlignment="Top" HorizontalAlignment="Stretch"  Items="{Binding Repos}" CanUserResizeColumns="True" AutoGenerateColumns="False" ColumnWidth="*" SelectionMode="Single">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+							<DataGridTextColumn Header="Path" Binding="{Binding Path}"/>
+							<DataGridTextColumn Header="RepositoryType" Binding="{Binding RepositoryType}"/>
+						</DataGrid.Columns>
+					</DataGrid>
+					<StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="25 10" Spacing="20">
+						<Button VerticalAlignment="Bottom" Command="{Binding RemRepo}" HorizontalAlignment="Right">
+							<PathIcon Data="{StaticResource delete_regular}"/>
+						</Button>
+						<Button Command="{Binding EditRepo}" HorizontalAlignment="Right">
+							<PathIcon Data="{StaticResource edit_regular}"/>
+						</Button>
+						<Button Command="{Binding AddRepo}" HorizontalAlignment="Right">
+							<PathIcon Data="{StaticResource add_regular}"/>
+						</Button>
+					</StackPanel>
+				</Grid>
+			</TabItem>
+			<TabItem Header="Hello"></TabItem>
+		</TabControl>
+	</Grid>
+</UserControl>

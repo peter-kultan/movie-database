@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace movie_database.Views
 {
-    public partial class SettingsWindow : Window
+    public partial class AddRepositoryDialogView : Window
     {
-        public SettingsWindow()
+        public AddRepositoryDialogView()
         {
             InitializeComponent();
 #if DEBUG

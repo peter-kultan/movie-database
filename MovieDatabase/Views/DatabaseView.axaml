@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="using:movie_database.Views"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="movie_database.Views.DatabaseView">
+	<Grid>
+		<Button VerticalAlignment="Top" Command="{Binding OpenCommand}" CommandParameter="Settings" HorizontalAlignment="Right" Margin="10 10">
+			<PathIcon Data="{StaticResource settings_regular}"/>
+		</Button>
+		<TabControl HorizontalAlignment="Stretch">
+			<TabItem Header="Movies">
+				<Panel HorizontalAlignment="Stretch">
+					<local:MovieGridView Margin="5 5"/>
+				</Panel>
+			</TabItem>
+			<TabItem Header="TV Series">
+				<Panel HorizontalAlignment="Stretch">
+					<local:TVSeriesGridView Margin="5 5"/>
+				</Panel>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</UserControl>

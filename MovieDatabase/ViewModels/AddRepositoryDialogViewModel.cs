@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace movie_database.ViewModels
 {
-    public class SettingsWindowView : ViewModelBase
+    public class AddRepositoryDialogViewModel : ViewModelBase
     {
     }
 }

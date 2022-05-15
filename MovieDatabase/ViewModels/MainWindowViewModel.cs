@@ -3,6 +3,8 @@ using Avalonia.Controls.ApplicationLifetimes;
 using DataSource;
 using DataSource.Models;
 using DataSource.Repositories;
+using GalaSoft.MvvmLight.Command;
+using movie_database.Commands;
 using movie_database.Views;
 using ReactiveUI;
 using System;
@@ -17,44 +19,18 @@ namespace movie_database.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private ViewModelBase _viewModel;
+
+        public ViewModelBase SelectedViewModel { 
+            get { return _viewModel; }
+            set { this.RaiseAndSetIfChanged(ref _viewModel, value); }  
+        }
+        public ICommand UpdateViewCommand { get; set; }
+
         public MainWindowViewModel()
         {
-            Utils.Init();
-            var context = new MovieDbContext();
-            var response = DataSource.Api.ApiController.Get("https://api.themoviedb.org/3/search/movie", new Dictionary<string, string>() { { "api_key", "a3baf7a02cdd3e1aa7b800d05ea630ea" }, { "query", "endgame" } });
-            context.Add(new Movie(response.Results[0]));
-            response = DataSource.Api.ApiController.Get("https://api.themoviedb.org/3/search/movie", new Dictionary<string, string>() { { "api_key", "a3baf7a02cdd3e1aa7b800d05ea630ea" }, { "query", "gran torino" } });
-            context.Add(new Movie(response.Results[0]));
-            context.SaveChanges();
-            Movies = new ObservableCollection<MovieTVViewModel>(context.Movies.ToObservable().Select(x => new MovieTVViewModel(x)).ToEnumerable());
-            Movies.Add(new MovieTVViewModel());
-            LoadCovers(new CancellationToken());
+            SelectedViewModel = new DatabaseViewModel(this);
+            UpdateViewCommand = new UpdateViewCommand(this);
         }
-
-
-        private async void LoadCovers(CancellationToken cancellationToken)
-        {
-            foreach (var movie in Movies)
-            {
-                await movie.LoadCover();
-
-                if (cancellationToken.IsCancellationRequested)
-                {
-                    return;
-                }
-            }
-        }
-
-        public void ShowSettings()
-        {
-            var window = new SettingsWindow();
-            if (Avalonia.Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                window.ShowDialog(desktop.MainWindow);
-            }
-        }
-
-        public ObservableCollection<MovieTVViewModel> Movies { get; } = new();
-        public ObservableCollection<MovieTVViewModel> TVSeries { get; } = new();
     }
 }

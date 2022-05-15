@@ -1,6 +1,8 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:movie_database"
+			 xmlns:localVies="using:movie_database.Views"
+			 xmlns:localViewModels="using:movie_database.ViewModels"
              x:Class="movie_database.App">
     <Application.DataTemplates>
         <local:ViewLocator/>

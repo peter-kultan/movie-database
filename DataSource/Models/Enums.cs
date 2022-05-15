@@ -6,4 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataSource.Models
 {    
+    public enum RepositoryType
+    {
+        Movie,
+        TVSeries
+    }
 }
