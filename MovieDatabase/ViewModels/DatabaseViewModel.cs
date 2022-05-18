@@ -30,22 +30,24 @@ namespace movie_database.ViewModels
 
         private async void LoadMovies()
         {
-            var db =  DbProvider.MovieDbContext;
-            var movies = await db.Movies.Include("MovieMetadata").ToListAsync();
-            foreach (var movie in movies)
-            {
-                Movies.Add(new(movie));
-            }
+            //var db =  DbProvider.MovieDbContext;
+            //var movies = await db.Movies.Include("MovieMetadata").ToListAsync();
+            //foreach (var movie in movies)
+            //{
+            //    Movies.Add(new(movie));
+            //}
+            ReloadMovies();
         }
 
         private async void LoadTVs()
         {
-            var db = DbProvider.TVSeriesDbContext;
-            var tvSeries = await db.TVSeries.Include("TVSeriesMetadata").ToListAsync();
-            foreach (var tv in tvSeries)
-            {
-                TVSeries.Add(new(tv));
-            }
+            //var db = DbProvider.TVSeriesDbContext;
+            //var tvSeries = await db.TVSeries.Include("TVSeriesMetadata").ToListAsync();
+            //foreach (var tv in tvSeries)
+            //{
+            //    TVSeries.Add(new(tv));
+            //}
+            ReloadTVs();
         }
 
 
@@ -90,6 +92,7 @@ namespace movie_database.ViewModels
 
         public async void ReloadMovies()
         {
+            Movies = new();
             var repos = await DbProvider.RepositoryDbContext.Repos.Where(x => x.RepositoryType == RepositoryType.Movie).ToListAsync();
             foreach(var repo in repos)
             {
@@ -99,8 +102,8 @@ namespace movie_database.ViewModels
                     if (!DbProvider.MovieDbContext.Movies.Any(m => m.Name == movie.Name))
                     {
                         DbProvider.MovieDbContext.Add(movie);
-                        Movies.Add(new(movie));
                     }
+                    Movies.Add(new(movie));
                 }
             }
             DbProvider.MovieDbContext.SaveChangesAsync();
@@ -109,6 +112,7 @@ namespace movie_database.ViewModels
 
         public async void ReloadTVs()
         {
+            TVSeries = new();
             var repos = await DbProvider.RepositoryDbContext.Repos.Where(x => x.RepositoryType == RepositoryType.TVSeries).ToListAsync();
             foreach(var repo in repos)
             {
@@ -118,15 +122,15 @@ namespace movie_database.ViewModels
                     if (!DbProvider.TVSeriesDbContext.TVSeries.Any(s => s.Name == tv.Name))
                     {
                         DbProvider.TVSeriesDbContext.Add(tv);
-                        TVSeries.Add(new(tv));
                     }
+                    TVSeries.Add(new(tv));
                 }
             }
             DbProvider.TVSeriesDbContext.SaveChangesAsync();
             LoadCovers(new CancellationToken());
         }
 
-        public ObservableCollection<MovieTVViewModel> Movies { get; } = new();
-        public ObservableCollection<MovieTVViewModel> TVSeries { get; } = new();
+        public ObservableCollection<MovieTVViewModel> Movies { get; set; } = new();
+        public ObservableCollection<MovieTVViewModel> TVSeries { get; set; } = new();
     }
 }

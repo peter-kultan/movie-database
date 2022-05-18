@@ -5,6 +5,7 @@
         xmlns:local="using:movie_database.Views"
 		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="movie_database.Views.MainWindow"
-        Title="MainWindow">
+		Icon="/Assets/logo.jpg"
+        Title="MovieDatabase">
 	<ContentControl Content="{Binding SelectedViewModel}"/>	
 </Window>

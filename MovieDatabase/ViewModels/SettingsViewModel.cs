@@ -77,8 +77,8 @@ namespace movie_database.ViewModels
 
         public void Delete()
         {
-            Repos.Remove(Selected);
             DbProvider.RepositoryDbContext.Remove(Selected);
+            Repos.Remove(Selected);
             DbProvider.RepositoryDbContext.SaveChanges();
         }
 
@@ -103,7 +103,10 @@ namespace movie_database.ViewModels
                     Repos.Add(newRepo);
                     Selected = newRepo;
 
-                    DbProvider.RepositoryDbContext.Update(repo);
+                    oldRepo.Name = newRepo.Name;
+                    oldRepo.Path = newRepo.Path;
+                    oldRepo.RepositoryType = newRepo.RepositoryType;
+                    DbProvider.RepositoryDbContext.Update(oldRepo);
                     DbProvider.RepositoryDbContext.SaveChanges();
                 }
             }

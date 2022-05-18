@@ -4,7 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="150"
         x:Class="movie_database.Views.AddRepositoryDialogView"
-        Title="AddRepositoryDialogView"
+		Icon="/Assets/logo.jpg"
+        Title="MovieDatabase"
 		WindowStartupLocation="CenterOwner"
 		Width="200"
 		Height="150">
