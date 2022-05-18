@@ -12,9 +12,9 @@ namespace DataSource.Models
         public string Name { get; set; }
         public TVSeriesMetadata TVSeriesMetadata { get; set; }
         
-        public TVSeries(dynamic anonym)
+        public TVSeries(string name, dynamic anonym)
         {
-            Name = anonym["name"];
+            Name = name;
             TVSeriesMetadata = new TVSeriesMetadata(anonym);
         }
 

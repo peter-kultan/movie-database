@@ -34,6 +34,10 @@ namespace movie_database.Commands
             {
                 viewModel.SelectedViewModel = new SettingsViewModel(viewModel);
             }
+            else if (parameter.ToString() == "MovieTVViewModel")
+            {
+                viewModel.SelectedViewModel = new MovieItemViewModel(viewModel, (MovieTVViewModel)parameter);
+            }
         }
     }
 }

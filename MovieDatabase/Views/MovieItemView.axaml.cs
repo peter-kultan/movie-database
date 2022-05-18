@@ -4,14 +4,11 @@ using Avalonia.Markup.Xaml;
 
 namespace movie_database.Views
 {
-    public partial class SettingsWindowView : Window
+    public partial class MovieItemView : UserControl
     {
-        public SettingsWindowView()
+        public MovieItemView()
         {
             InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
         }
 
         private void InitializeComponent()

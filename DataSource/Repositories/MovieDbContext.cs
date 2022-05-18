@@ -18,7 +18,6 @@ namespace DataSource.Repositories
 
         public MovieDbContext() : base()
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
             

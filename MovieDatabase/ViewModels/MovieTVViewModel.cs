@@ -18,6 +18,16 @@ namespace movie_database.ViewModels
         private Movie? _movie;
         private TVSeries? _tvSeries;
 
+        public Movie? Movie { get
+            {
+                return _movie;
+            }
+            set
+            {
+                _movie = value;
+            }
+            }
+
         public MovieTVViewModel(Movie? movie)
         {
             _tvSeries = null;
@@ -44,7 +54,16 @@ namespace movie_database.ViewModels
 
         public async Task LoadCover()
         {
-            var imagePath = _movie != null ? _movie.MovieMetadata.PosterPath : _tvSeries != null ? _tvSeries.TVSeriesMetadata.PosterPath : "";
+            var imagePath = "";
+
+            if (_movie != null && _movie.MovieMetadata != null)
+            {
+                imagePath = _movie.MovieMetadata.PosterPath;
+            }
+            else if (_tvSeries != null && _tvSeries.TVSeriesMetadata != null)
+            {
+                imagePath = _tvSeries.TVSeriesMetadata.PosterPath;
+            }
 
             if (imagePath == "")
             {
@@ -63,6 +82,11 @@ namespace movie_database.ViewModels
             {
                 Cover = await Task.Run(() => Bitmap.DecodeToWidth(stream, 400));
             }
+        }
+
+        public override string ToString()
+        {
+            return "MovieTVViewModel";
         }
     }
 }

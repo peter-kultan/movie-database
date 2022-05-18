@@ -13,9 +13,9 @@ namespace DataSource.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public MovieMetadata MovieMetadata { get; set; }
-        public Movie(dynamic anonym)
+        public Movie(string name, dynamic anonym)
         {
-            Name = anonym["title"];
+            Name = name;
             MovieMetadata = new MovieMetadata(anonym);
         }
 

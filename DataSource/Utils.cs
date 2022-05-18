@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace DataSource
         {
             if (TVSeriesGenres == null)
             {
-                var response = Api.ApiController.GetList("https://api.themoviedb.org/3/genre/tv/list", new Dictionary<string, string>() { { "api_key", "a3baf7a02cdd3e1aa7b800d05ea630ea" } });
+                var response = Api.ApiController.GetList("https://api.themoviedb.org/3/genre/tv/list", new Dictionary<string, string>() { { "api_key", Utils.LoadSettings().ApiKey } });
                 TVSeriesGenres = response.ToTVSeriesGenres().ToDictionary(x => x.Id, x => x);
             }
             return ids.Join(TVSeriesGenres,
@@ -31,7 +32,7 @@ namespace DataSource
         {
             if (MovieGenres == null)
             {
-                var response = Api.ApiController.GetList("https://api.themoviedb.org/3/genre/movie/list", new Dictionary<string, string>() { { "api_key", "a3baf7a02cdd3e1aa7b800d05ea630ea" } });
+                var response = Api.ApiController.GetList("https://api.themoviedb.org/3/genre/movie/list", new Dictionary<string, string>() { { "api_key", Utils.LoadSettings().ApiKey    } });
                 MovieGenres = response.ToMovieGenres().ToDictionary(x => x.Id, x => x);
             }
             return ids.Join(MovieGenres,
@@ -44,12 +45,13 @@ namespace DataSource
         {
             name = name.ToLower()
                 .Replace('_', ' ')
+                .Replace('-', ' ')
                 .Replace('.', ' ')
                 .Replace('(', ' ')
                 .Replace(')', ' ');
-            Match r = Regex.Match(name, "\b\b{4}\b");
+            Match r = Regex.Match(name, @"\b\d{4}\b");
             string yearFromName = r.Groups[r.Groups.Count - 1].Value;
-            return (!string.IsNullOrEmpty(yearFromName)) ? name.Substring(0, name.IndexOf(yearFromName)) : name;
+            return (!string.IsNullOrEmpty(yearFromName)) ? name.Substring(0, name.IndexOf(yearFromName)) : name.Substring(0, name.LastIndexOf(" "));
         }
 
         public static void Init()
@@ -61,6 +63,22 @@ namespace DataSource
         {
             Directory.CreateDirectory(".cache/Posters/");
             Directory.CreateDirectory(".cache/BackDrops/");
+        }
+
+        private static Settings _settings;
+
+        public static Settings LoadSettings()
+        {
+            if (_settings == null)
+            {
+                if (!File.Exists(@"Settings.json"))
+                {
+                    return new Settings("");
+                }
+                string json = File.ReadAllText(@"Settings.json");
+                _settings =  JsonSerializer.Deserialize<Settings>(json);
+            }
+            return _settings;
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using Avalonia.Controls.ApplicationLifetimes;
+using DataSource;
 using DataSource.Models;
+using Microsoft.EntityFrameworkCore;
 using movie_database.Views;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,39 +16,116 @@ namespace movie_database.ViewModels
     public class SettingsViewModel : ViewModelBase
     {
         private MainWindowViewModel _parent;
+        public ObservableCollection<Repository> Repos { get; set; } = new();
+        public void BackCommand() => _parent.UpdateViewCommand.Execute("Home");
         public SettingsViewModel(MainWindowViewModel parent)
         {
             _parent = parent;
-            Repos.Add(new("Movies", "/agr/d/f/gf/d", RepositoryType.Movie));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
-            Repos.Add(new("TVSeries", "ds/f/dsf/ds/f", RepositoryType.TVSeries));
+            LoadRepositories();
+        }
+        private Settings _settings;
+        public string ApiKey
+        {
+            get
+            {
+                if (_settings == null)
+                {
+                    _settings = Utils.LoadSettings();
+                }
+                return _settings.ApiKey;
+            }
+            set
+            {
+                _settings.ApiKey = value;
+                _settings.Save();
+            }
+        }
+        private async void LoadRepositories()
+        {
+            var repositories = await Task.Run(() => DbProvider.RepositoryDbContext.Repos.ToListAsync());
+            foreach(var repo in repositories)
+            {
+                Repos.Add(repo);
+            }
         }
 
-        public ObservableCollection<Repository> Repos { get; set; } = new();
-        public void BackCommand() => _parent.UpdateViewCommand.Execute("Home");
+        private Repository _selected;
+        public Repository Selected 
+        { 
+            get
+            {
+                return _selected;
+            } 
+            set 
+            { 
+                this.RaiseAndSetIfChanged(ref _selected, value);
+                IsSelected = Selected != null;
+            }
+        }
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _isSelected, value);
+            }
+        }
 
-        public void AddRepo()
+        public void Delete()
+        {
+            Repos.Remove(Selected);
+            DbProvider.RepositoryDbContext.Remove(Selected);
+            DbProvider.RepositoryDbContext.SaveChanges();
+        }
+
+        public async void Edit()
         {
             var dialog = new AddRepositoryDialogView();
+            var vm = new AddRepositoryDialogViewModel();
+            vm.Name = Selected.Name;
+            vm.Path = Selected.Path;
+            vm.SelectedType = Selected.RepositoryType.ToString();
+            dialog.DataContext = vm;
+            vm.Close = new Action<object>(dialog.Close);
             if (Avalonia.Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                dialog.ShowDialog(desktop.MainWindow);
+                var dr = dialog.ShowDialog<object>(desktop.MainWindow);
+                var repo = await dr;
+                if (repo != null)
+                {
+                    var oldRepo = Selected;
+                    var newRepo = (Repository)repo;
+                    Repos.Remove(oldRepo);
+                    Repos.Add(newRepo);
+                    Selected = newRepo;
+
+                    DbProvider.RepositoryDbContext.Update(repo);
+                    DbProvider.RepositoryDbContext.SaveChanges();
+                }
+            }
+        }
+
+        public async void AddRepo()
+        {
+            var dialog = new AddRepositoryDialogView();
+            var vm = new AddRepositoryDialogViewModel();
+            dialog.DataContext = vm;
+            vm.Close = new Action<Object>(dialog.Close);
+            if (Avalonia.Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                var dr = dialog.ShowDialog<object>(desktop.MainWindow);
+                var repo = await dr;
+                if (repo != null)
+                {
+                    var newRepo = (Repository)repo;
+                    Repos.Add(newRepo);
+                    DbProvider.RepositoryDbContext.Add(newRepo);
+                    DbProvider.RepositoryDbContext.SaveChanges();
+                }
             }
         }
     }

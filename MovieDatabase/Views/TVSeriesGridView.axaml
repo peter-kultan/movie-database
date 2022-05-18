@@ -4,11 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="movie_database.Views.TVSeriesGridView">
-	<ListBox HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Items="{Binding TVSeries}" Background="Transparent" Margin="5 5">
-		<ListBox.ItemsPanel>
-			<ItemsPanelTemplate>
-				<WrapPanel/>
-			</ItemsPanelTemplate>
-		</ListBox.ItemsPanel>
-	</ListBox>
+	<Grid>
+		<ListBox HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Items="{Binding TVSeries}" Background="Transparent" Margin="5 5">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+		</ListBox>
+		<Button Command="{Binding ReloadTVs}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5 5">
+			<PathIcon Data="{StaticResource arrow_counterclockwise_regular}"/>
+		</Button>
+	</Grid>
 </UserControl>
