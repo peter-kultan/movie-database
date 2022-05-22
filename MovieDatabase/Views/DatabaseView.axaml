@@ -10,15 +10,17 @@
 			<PathIcon Data="{StaticResource settings_regular}"/>
 		</Button>
 		<TabControl HorizontalAlignment="Stretch">
-			<TabItem Header="Movies">
+			<TabItem Header="Movies">			
 				<Panel HorizontalAlignment="Stretch">
 					<local:MovieGridView Margin="5 5"/>
 				</Panel>
 			</TabItem>
 			<TabItem Header="TV Series">
+				<Grid>
 				<Panel HorizontalAlignment="Stretch">
 					<local:TVSeriesGridView Margin="5 5"/>
 				</Panel>
+				</Grid>
 			</TabItem>
 		</TabControl>
 	</Grid>

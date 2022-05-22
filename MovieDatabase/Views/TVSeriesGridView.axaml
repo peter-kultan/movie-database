@@ -5,15 +5,21 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="movie_database.Views.TVSeriesGridView">
 	<Grid>
-		<ListBox HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Items="{Binding TVSeries}" Background="Transparent" Margin="5 5">
+		<ListBox SelectedItem="{Binding SelectedTVSeries}" HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Items="{Binding TVSeries}" Background="Transparent" Margin="5 5">
 			<ListBox.ItemsPanel>
 				<ItemsPanelTemplate>
 					<WrapPanel/>
 				</ItemsPanelTemplate>
 			</ListBox.ItemsPanel>
 		</ListBox>
-		<Button Command="{Binding ReloadTVs}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5 5">
-			<PathIcon Data="{StaticResource arrow_counterclockwise_regular}"/>
-		</Button>
+
+		<StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10 10" Spacing="20">
+			<Button Command="{Binding OpenTVSeriesDetailsCommand}" IsEnabled="{Binding IsSelectedTVSeries}">
+				<PathIcon Data="{StaticResource info_regular}"/>
+			</Button>
+			<Button Command="{Binding ReloadTVs}">
+				<PathIcon Data="{StaticResource arrow_counterclockwise_regular}"/>
+			</Button>
+		</StackPanel>
 	</Grid>
 </UserControl>

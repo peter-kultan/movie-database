@@ -1,13 +1,12 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using movie_database.ViewModels;
 
 namespace movie_database.Views
 {
-    public partial class MovieItemView : UserControl
+    public partial class TVSeriesItemView : UserControl
     {
-        public MovieItemView()
+        public TVSeriesItemView()
         {
             InitializeComponent();
         }

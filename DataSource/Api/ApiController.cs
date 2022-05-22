@@ -4,26 +4,47 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using Newtonsoft.Json;
+using DataSource.Models;
 
 namespace DataSource.Api
 {
     public static class ApiController
     {
-        public static Response? Get(string address, Dictionary<string, string> queryParameters)
+
+        public static async Task<TVSeriesEpisode> GetTVSeriesEpisode(string address, Dictionary<string, string> queryParameters)
         {
             using var client = new HttpClient();
             address = BuildAddress(address, queryParameters);
-            return Deserializer(Task.Run(() => client.GetAsync(address)));
+
+            var serializer = new JsonSerializer();
+            return serializer.Deserialize<TVSeriesEpisode>(new JsonTextReader(new StreamReader((await client.GetAsync(address)).Content.ReadAsStream())));
         }
-
-
-        public static ListResponse? GetList(string address, Dictionary<string, string> queryParameters)
+        public static async Task<MovieResponse?> GetMovies(string address, Dictionary<string, string> queryParameters)
         {
             using var client = new HttpClient();
             address = BuildAddress(address, queryParameters);
-            return ListDeserializer(Task.Run(() => client.GetAsync(address)));
+            
+            var serializer = new JsonSerializer();
+            return serializer.Deserialize<MovieResponse>(new JsonTextReader(new StreamReader((await client.GetAsync(address)).Content.ReadAsStream())));
         }
 
+        public static async Task<TVSeriesResponse?> GetTVSeries(string address, Dictionary<string, string> queryParameters)
+        {
+            using var client = new HttpClient();
+            address = BuildAddress(address, queryParameters);
+
+            var serializer = new JsonSerializer();
+            return serializer.Deserialize<TVSeriesResponse>(new JsonTextReader(new StreamReader((await client.GetAsync(address)).Content.ReadAsStream())));
+        }
+
+        public static async Task<GenreResponse?> GetGenres(string address, Dictionary<string, string> queryParameters)
+        {
+            using var client = new HttpClient();
+            address = BuildAddress(address, queryParameters);
+
+            var serializer = new JsonSerializer();
+            return serializer.Deserialize<GenreResponse>(new JsonTextReader(new StreamReader((await client.GetAsync(address)).Content.ReadAsStream())));
+        }
 
         private static string BuildAddress(string address, Dictionary<string, string> queryParameters)
         {
@@ -34,24 +55,6 @@ namespace DataSource.Api
             }
 
             return address;
-        }
-
-        public static ListResponse? ListDeserializer(Task<HttpResponseMessage> content)
-        {
-            while (content.Status != TaskStatus.RanToCompletion)
-            { }
-
-            var serializer = new JsonSerializer();
-            return serializer.Deserialize<ListResponse>(new JsonTextReader(new StreamReader(content.Result.Content.ReadAsStream())));
-        }
-
-        public static Response? Deserializer(Task<HttpResponseMessage> content)
-        {
-            while (content.Status != TaskStatus.RanToCompletion)
-            { }
-
-            var serializer = new JsonSerializer();
-            return serializer.Deserialize<Response>(new JsonTextReader(new StreamReader(content.Result.Content.ReadAsStream())));
         }
     }
 }

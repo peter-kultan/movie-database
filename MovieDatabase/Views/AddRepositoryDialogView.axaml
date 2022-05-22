@@ -2,20 +2,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="150"
+        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="155"
         x:Class="movie_database.Views.AddRepositoryDialogView"
 		Icon="/Assets/logo.jpg"
         Title="MovieDatabase"
 		WindowStartupLocation="CenterOwner"
 		Width="200"
-		Height="150">
+		Height="155">
 	<StackPanel Spacing="10" Margin="10 10" VerticalAlignment="Stretch">
 		<TextBox Text="{Binding Name}"/>
 		<Grid>
 			<TextBox Text="{Binding Path}"/>
 			<Button HorizontalAlignment="Right" Content="..." Margin="5 5" Width="25" Height="21.5" Command="{Binding OpenFolderDialogAsync}"/>
 		</Grid>
-		<ComboBox Items="{Binding RepositoryTypes}" SelectedItem="{Binding SelectedType}"/>
+		<ComboBox Items="{Binding RepositoryTypes}" SelectedItem="{Binding SelectedType}" Height="24"/>
 		<DockPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
 			<Button Content="Cancel" VerticalAlignment="Bottom" HorizontalAlignment="Left" Command="{Binding Cancel}"/>
 			<Button Content="Add" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsEnabled="{Binding AddEnabled}" Command="{Binding Add}"/>

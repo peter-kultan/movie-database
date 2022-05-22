@@ -12,6 +12,7 @@ namespace DataSource
         private static MovieDbContext _movieDbContext;
         private static RepositoryDbContext _repositoryDbContext;
         private static TVSeriesDbContext _seriesDbContext;
+        private static GenresDbContext _genreDbContext;
 
         public static MovieDbContext MovieDbContext
         {
@@ -46,6 +47,18 @@ namespace DataSource
                     _seriesDbContext = new();
                 }
                 return _seriesDbContext;
+            }
+        }
+
+        public static GenresDbContext GenreDbContext
+        {
+            get
+            {
+                if (_genreDbContext == null)
+                {
+                    _genreDbContext = new();
+                }
+                return _genreDbContext;
             }
         }
     }

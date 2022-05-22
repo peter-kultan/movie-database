@@ -4,6 +4,7 @@ using DataSource;
 using DataSource.Models;
 using DataSource.Repositories;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.EntityFrameworkCore;
 using movie_database.Commands;
 using movie_database.Views;
 using ReactiveUI;

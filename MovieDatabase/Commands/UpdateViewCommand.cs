@@ -10,11 +10,12 @@ namespace movie_database.Commands
 {
     public class UpdateViewCommand : ICommand
     {
-        private MainWindowViewModel viewModel;
+        private MainWindowViewModel _viewModel;
+        private ViewModelBase _back;
 
         public UpdateViewCommand(MainWindowViewModel viewModel)
         {
-            this.viewModel = viewModel;
+            this._viewModel = viewModel;
         }
 
         public event EventHandler? CanExecuteChanged;
@@ -26,17 +27,35 @@ namespace movie_database.Commands
 
         public void Execute(object? parameter)
         {
-            if (parameter.ToString() == "Home")
+            if (parameter.GetType() == typeof(MovieViewModel))
             {
-                viewModel.SelectedViewModel = new DatabaseViewModel(viewModel);
+                _back = _viewModel.SelectedViewModel;
+                _viewModel.SelectedViewModel = new MovieItemViewModel(_viewModel, (MovieViewModel)parameter);
+            }
+            else if (parameter.GetType() == typeof(TVSeriesViewModel))
+            {
+                _back = _viewModel.SelectedViewModel;
+                _viewModel.SelectedViewModel = new TVSeriesItemViewModel(_viewModel, (TVSeriesViewModel)parameter);
+            }
+            else if (parameter.ToString() == "Back")
+            {
+                if (_back == null)
+                {
+                    Execute("Home");
+                    return;
+                }
+                _viewModel.SelectedViewModel = _back;
+                _back = null;
+            }
+            else if (parameter.ToString() == "Home")
+            {
+                _back = _viewModel.SelectedViewModel;
+                _viewModel.SelectedViewModel = new DatabaseViewModel(_viewModel);
             }
             else if (parameter.ToString() == "Settings")
             {
-                viewModel.SelectedViewModel = new SettingsViewModel(viewModel);
-            }
-            else if (parameter.ToString() == "MovieTVViewModel")
-            {
-                viewModel.SelectedViewModel = new MovieItemViewModel(viewModel, (MovieTVViewModel)parameter);
+                _back = _viewModel.SelectedViewModel;
+                _viewModel.SelectedViewModel = new SettingsViewModel(_viewModel);
             }
         }
     }

@@ -12,17 +12,12 @@ namespace DataSource.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public MovieMetadata MovieMetadata { get; set; }
-        public Movie(string name, dynamic anonym)
-        {
-            Name = name;
-            MovieMetadata = new MovieMetadata(anonym);
-        }
+        public MovieMetadata? Metadata { get; set; }
 
-        public Movie(string name, MovieMetadata metadata)
+        public Movie(string name, MovieMetadata? metadata)
         {
             Name = name;
-            MovieMetadata = metadata;
+            Metadata = metadata; 
         }
 
         public Movie()

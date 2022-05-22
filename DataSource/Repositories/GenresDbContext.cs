@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace DataSource.Repositories
 {
-    public class TVSeriesDbContext : DbContext
-    {
-        public DbSet<TVSeries> TVSeries { get; set; }
-        public DbSet<TVSeriesMetadata> TVSeriesMetadata { get; set; }
-        public DbSet<TVSeriesEpisode> TVSeriesEpisode { get; set; }
-        public TVSeriesDbContext() : base()
+    public class GenresDbContext: DbContext
+    { 
+        public DbSet<Genre> Genres { get; set; }
+
+        public GenresDbContext() : base()
         {
         }
 
@@ -21,6 +20,7 @@ namespace DataSource.Repositories
         {
             optionsBuilder
                 .UseSqlite(@"Data Source=movieDB.db");
+            optionsBuilder.EnableSensitiveDataLogging();
         }
     }
 }

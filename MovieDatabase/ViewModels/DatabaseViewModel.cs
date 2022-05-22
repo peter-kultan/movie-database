@@ -4,6 +4,7 @@ using DataSource.Models;
 using DataSource.Repositories;
 using Microsoft.EntityFrameworkCore;
 using movie_database.Views;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,48 +24,51 @@ namespace movie_database.ViewModels
             _parent = parent;
 
             Utils.Init();
-            LoadMovies();
-            LoadTVs();
-            LoadCovers(new CancellationToken());
-        }
-
-        private async void LoadMovies()
-        {
-            //var db =  DbProvider.MovieDbContext;
-            //var movies = await db.Movies.Include("MovieMetadata").ToListAsync();
-            //foreach (var movie in movies)
-            //{
-            //    Movies.Add(new(movie));
-            //}
             ReloadMovies();
-        }
-
-        private async void LoadTVs()
-        {
-            //var db = DbProvider.TVSeriesDbContext;
-            //var tvSeries = await db.TVSeries.Include("TVSeriesMetadata").ToListAsync();
-            //foreach (var tv in tvSeries)
-            //{
-            //    TVSeries.Add(new(tv));
-            //}
             ReloadTVs();
+            LoadCovers(new CancellationToken());
         }
 
 
         public void OpenCommand(object? obj) => _parent.UpdateViewCommand.Execute(obj);
 
-        private MovieTVViewModel _selectedMovie;
-        public MovieTVViewModel SelectedMovie
+        public void OpenMovieDetailsCommand() => OpenCommand(SelectedMovie);
+        public void OpenTVSeriesDetailsCommand() => OpenCommand(SelectedTVSeries);
+
+        private MovieViewModel _selectedMovie;
+        private TVSeriesViewModel _selectedtvSeries;
+        private bool _isSelectedMovie;
+        private bool _isSelectedTVSeries;
+        public MovieViewModel SelectedMovie
         {
             get => _selectedMovie;
             set
             {
                 _selectedMovie = value;
-                if (value != null)
-                {
-                    _parent.UpdateViewCommand.Execute(value);
-                }
+                IsSelectedMovie = value != null;
             }
+        }
+
+        public bool IsSelectedMovie
+        {
+            get => _isSelectedMovie;
+            set => this.RaiseAndSetIfChanged(ref _isSelectedMovie, value);
+        }
+
+        public TVSeriesViewModel SelectedTVSeries
+        {
+            get => _selectedtvSeries;
+            set
+            {
+                _selectedtvSeries = value;
+                IsSelectedTVSeries = value != null;
+            }
+        }
+
+        public bool IsSelectedTVSeries
+        {
+            get => _isSelectedTVSeries;
+            set => this.RaiseAndSetIfChanged(ref _isSelectedTVSeries, value);
         }
 
         private async void LoadCovers(CancellationToken cancellationToken)
@@ -93,44 +97,43 @@ namespace movie_database.ViewModels
         public async void ReloadMovies()
         {
             Movies = new();
-            var repos = await DbProvider.RepositoryDbContext.Repos.Where(x => x.RepositoryType == RepositoryType.Movie).ToListAsync();
+            var repos = await DbProvider.RepositoryDbContext.Repository.Where(x => x.RepositoryType == RepositoryType.Movie).ToListAsync();
             foreach(var repo in repos)
             {
-                var movies = RepositoryDiscoverer.DiscoverFilmRepository(repo.Path);
+                var movies = await RepositoryDiscoverer.DiscoverFilmRepository(repo.Path);
                 foreach(var movie in movies)
                 {
-                    if (!DbProvider.MovieDbContext.Movies.Any(m => m.Name == movie.Name))
+                    if (!DbProvider.MovieDbContext.Movie.Any(m => m.Name == movie.Name))
                     {
                         DbProvider.MovieDbContext.Add(movie);
                     }
                     Movies.Add(new(movie));
-                }
+                } 
             }
-            DbProvider.MovieDbContext.SaveChangesAsync();
             LoadCovers(new CancellationToken());
+            DbProvider.MovieDbContext.SaveChanges();
         }
 
         public async void ReloadTVs()
         {
             TVSeries = new();
-            var repos = await DbProvider.RepositoryDbContext.Repos.Where(x => x.RepositoryType == RepositoryType.TVSeries).ToListAsync();
+            var repos = await DbProvider.RepositoryDbContext.Repository.Where(x => x.RepositoryType == RepositoryType.TVSeries).ToListAsync();
             foreach(var repo in repos)
             {
-                var tvs = RepositoryDiscoverer.DiscoverTVRepository(repo.Path);
+                var tvs = await RepositoryDiscoverer.DiscoverTVRepository(repo.Path);
                 foreach(var tv in tvs)
                 {
                     if (!DbProvider.TVSeriesDbContext.TVSeries.Any(s => s.Name == tv.Name))
                     {
                         DbProvider.TVSeriesDbContext.Add(tv);
-                    }
+                    }                                                                         
                     TVSeries.Add(new(tv));
                 }
             }
             DbProvider.TVSeriesDbContext.SaveChangesAsync();
-            LoadCovers(new CancellationToken());
         }
 
-        public ObservableCollection<MovieTVViewModel> Movies { get; set; } = new();
-        public ObservableCollection<MovieTVViewModel> TVSeries { get; set; } = new();
+        public ObservableCollection<MovieViewModel> Movies { get; set; } = new();
+        public ObservableCollection<TVSeriesViewModel> TVSeries { get; set; } = new();
     }
 }

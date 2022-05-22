@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace movie_database.Views
 {
-    public partial class MovieTVView : UserControl
+    public partial class MovieView : UserControl
     {
-        public MovieTVView()
+        public MovieView()
         {
             InitializeComponent();
         }

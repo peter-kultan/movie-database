@@ -10,21 +10,16 @@ namespace DataSource.Repositories
 {
     public class RepositoryDbContext : DbContext
     {
-        public DbSet<Repository> Repos { get; set; }
+        public DbSet<Repository> Repository { get; set; }
 
         public RepositoryDbContext() : base()
         {
-            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlite(@"Data Source=repoDB.db");
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+                .UseSqlite(@"Data Source=movieDB.db");
         }
     }
 }

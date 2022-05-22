@@ -17,7 +17,7 @@ namespace movie_database.ViewModels
     {
         private MainWindowViewModel _parent;
         public ObservableCollection<Repository> Repos { get; set; } = new();
-        public void BackCommand() => _parent.UpdateViewCommand.Execute("Home");
+        public void BackCommand() => _parent.UpdateViewCommand.Execute("Back");
         public SettingsViewModel(MainWindowViewModel parent)
         {
             _parent = parent;
@@ -42,7 +42,7 @@ namespace movie_database.ViewModels
         }
         private async void LoadRepositories()
         {
-            var repositories = await Task.Run(() => DbProvider.RepositoryDbContext.Repos.ToListAsync());
+            var repositories = await Task.Run(() => DbProvider.RepositoryDbContext.Repository.ToListAsync());
             foreach(var repo in repositories)
             {
                 Repos.Add(repo);

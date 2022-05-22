@@ -1,4 +1,5 @@
 ﻿using DataSource.Models;
+using DataSource.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,34 +12,12 @@ namespace DataSource
 {
     public static class Utils
     {
+        private static Settings _settings;
 
-        private static Dictionary<int, TVSeriesGenre> TVSeriesGenres = null;
-        private static Dictionary<int, MovieGenre> MovieGenres = null;
-
-        public static List<TVSeriesGenre> GetTvSeriesGenres(List<int> ids)
+        public static async Task<List<Genre>> GetGenres(bool movie)
         {
-            if (TVSeriesGenres == null)
-            {
-                var response = Api.ApiController.GetList("https://api.themoviedb.org/3/genre/tv/list", new Dictionary<string, string>() { { "api_key", Utils.LoadSettings().ApiKey } });
-                TVSeriesGenres = response.ToTVSeriesGenres().ToDictionary(x => x.Id, x => x);
-            }
-            return ids.Join(TVSeriesGenres,
-                id => id,
-                genre => genre.Key,
-                (id, genre) => genre.Value).ToList();
-        }
-
-        public static List<MovieGenre> GetMovieGenres(List<int> ids)
-        {
-            if (MovieGenres == null)
-            {
-                var response = Api.ApiController.GetList("https://api.themoviedb.org/3/genre/movie/list", new Dictionary<string, string>() { { "api_key", Utils.LoadSettings().ApiKey    } });
-                MovieGenres = response.ToMovieGenres().ToDictionary(x => x.Id, x => x);
-            }
-            return ids.Join(MovieGenres,
-                id => id,
-                genre => genre.Key,
-                (id, genre) => genre.Value).ToList();
+            var part = movie ? "movie" : "tv";
+            return (await Api.ApiController.GetGenres($"https://api.themoviedb.org/3/genre/{part}/list", new Dictionary<string, string>() { { "api_key", LoadSettings().ApiKey } })).Genres;
         }
 
         public static string ParseName(string name)
@@ -57,6 +36,7 @@ namespace DataSource
         public static void Init()
         {
             CreateCacheDir();
+            _ = new CreateDatabaseDbContext();
         }
 
         private static void CreateCacheDir()
@@ -64,8 +44,6 @@ namespace DataSource
             Directory.CreateDirectory(".cache/Posters/");
             Directory.CreateDirectory(".cache/BackDrops/");
         }
-
-        private static Settings _settings;
 
         public static Settings LoadSettings()
         {

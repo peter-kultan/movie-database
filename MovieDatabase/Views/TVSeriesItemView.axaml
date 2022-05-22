@@ -3,10 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="movie_database.Views.MovieItemView">
+             x:Class="movie_database.Views.TVSeriesItemView">
 	<Grid>
 		<StackPanel Orientation="Vertical">
-		<StackPanel Orientation="Vertical"/>
+			<StackPanel Orientation="Vertical"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15 15" Spacing="20">
 				<Image Source="{Binding Cover}" Width="200"/>
 				<StackPanel Orientation="Horizontal" Spacing="5">
@@ -14,12 +14,13 @@
 					<TextBlock FontFamily="10" Text="{Binding Year}" VerticalAlignment="Center"/>
 				</StackPanel>
 			</StackPanel>
-			<TextBlock Text="{Binding Release}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
-			<TextBlock Text="{Binding Language}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
-			<TextBlock Text="{Binding OriginalTitle}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
+			<TextBlock Text="{Binding AirDate}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
+			<TextBlock Text="{Binding OriginLanguage}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
+			<TextBlock Text="{Binding OriginalName}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
 			<TextBlock Text="{Binding VoteAverage}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
 			<TextBlock Text="{Binding VoteCount}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
 			<TextBlock Text="{Binding Overview}" HorizontalAlignment="Left" Margin="40 5"  TextWrapping="Wrap"/>
+			<TextBlock Text="{Binding Episodes}" HorizontalAlignment="Left" Margin="40 5" TextWrapping="Wrap"/>
 		</StackPanel>
 		<Button Command="{Binding BackCommand}" Content="Back" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="Transparent" BorderThickness="1" Height="50" Width="65"/>
 	</Grid>

@@ -39,4 +39,9 @@
       <SubType>Designer</SubType>
     </AvaloniaXaml>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\MovieView.axaml.cs">
+      <DependentUpon>MovieView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
