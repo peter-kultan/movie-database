@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDatabase", "MovieDatabase\MovieDatabase.csproj", "{6B7E2288-5AA8-4FE3-86CE-B747F8462224}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDatabaseDAL", "DataSource\MovieDatabaseDAL.csproj", "{E8D7D73C-39BA-4388-B421-B7D3ED5FB1B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDatabaseDAL", "MovieDatabaseDAL\MovieDatabaseDAL.csproj", "{E8D7D73C-39BA-4388-B421-B7D3ED5FB1B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

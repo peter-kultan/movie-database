@@ -1,4 +1,4 @@
-﻿using DataSource.Models;
+﻿using MovieDatabaseDAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataSource.Repositories
+namespace MovieDatabaseDAL.Repositories
 {
     public class CreateDatabaseDbContext : DbContext
     {

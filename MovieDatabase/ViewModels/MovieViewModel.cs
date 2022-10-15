@@ -1,4 +1,4 @@
-﻿using DataSource.Models;
+﻿using MovieDatabaseDAL.Models;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
 using System;

@@ -1,4 +1,4 @@
-﻿using DataSource.Models;
+﻿using MovieDatabaseDAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataSource.Repositories
+namespace MovieDatabaseDAL.Repositories
 {
-    public class RepositoryDbContext : DbContext
-    {
-        public DbSet<Repository> Repository { get; set; }
+    public class GenresDbContext: DbContext
+    { 
+        public DbSet<Genre> Genres { get; set; }
 
-        public RepositoryDbContext() : base()
+        public GenresDbContext() : base()
         {
         }
 
@@ -20,6 +20,7 @@ namespace DataSource.Repositories
         {
             optionsBuilder
                 .UseSqlite(@"Data Source=movieDB.db");
+            optionsBuilder.EnableSensitiveDataLogging();
         }
     }
 }

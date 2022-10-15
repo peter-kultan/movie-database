@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls.ApplicationLifetimes;
-using DataSource;
-using DataSource.Models;
+using MovieDatabaseDAL;
+using MovieDatabaseDAL.Models;
 using Microsoft.EntityFrameworkCore;
 using movie_database.Views;
 using ReactiveUI;

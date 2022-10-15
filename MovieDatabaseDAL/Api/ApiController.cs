@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using Newtonsoft.Json;
-using DataSource.Models;
+using MovieDatabaseDAL.Models;
 
-namespace DataSource.Api
+namespace MovieDatabaseDAL.Api
 {
     public static class ApiController
     {

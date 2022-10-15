@@ -1,6 +1,6 @@
 ﻿using Avalonia.Media.Imaging;
-using DataSource;
-using DataSource.Models;
+using MovieDatabaseDAL;
+using MovieDatabaseDAL.Models;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;

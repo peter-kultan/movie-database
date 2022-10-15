@@ -1,4 +1,4 @@
-﻿using DataSource.Models;
+﻿using MovieDatabaseDAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,14 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataSource.Repositories
+namespace MovieDatabaseDAL.Repositories
 {
-    public class TVSeriesDbContext : DbContext
+    public class RepositoryDbContext : DbContext
     {
-        public DbSet<TVSeries> TVSeries { get; set; }
-        public DbSet<TVSeriesMetadata> TVSeriesMetadata { get; set; }
-        public DbSet<TVSeriesEpisode> TVSeriesEpisode { get; set; }
-        public TVSeriesDbContext() : base()
+        public DbSet<Repository> Repository { get; set; }
+
+        public RepositoryDbContext() : base()
         {
         }
 

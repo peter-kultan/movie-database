@@ -1,5 +1,5 @@
-﻿using DataSource.Models;
-using DataSource.Repositories;
+﻿using MovieDatabaseDAL.Models;
+using MovieDatabaseDAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace DataSource
+namespace MovieDatabaseDAL
 {
     public static class Utils
     {

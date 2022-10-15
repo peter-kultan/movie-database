@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace DataSource.Models
+namespace MovieDatabaseDAL.Models
 {
     public class Settings
     {
