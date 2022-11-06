@@ -1,5 +1,4 @@
 ﻿using MovieDatabaseDAL.Models;
-using MovieDatabaseDAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +35,7 @@ namespace MovieDatabaseDAL
         public static void Init()
         {
             CreateCacheDir();
-            _ = new CreateDatabaseDbContext();
+            _ = new MovieDatabaseDbContext();
         }
 
         private static void CreateCacheDir()

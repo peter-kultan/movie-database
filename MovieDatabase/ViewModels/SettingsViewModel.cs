@@ -42,7 +42,7 @@ namespace movie_database.ViewModels
         }
         private async void LoadRepositories()
         {
-            var repositories = await Task.Run(() => DbProvider.RepositoryDbContext.Repository.ToListAsync());
+            var repositories = await Task.Run(() => DbProvider.DbContext.Repository.ToListAsync());
             foreach(var repo in repositories)
             {
                 Repos.Add(repo);
@@ -77,9 +77,9 @@ namespace movie_database.ViewModels
 
         public void Delete()
         {
-            DbProvider.RepositoryDbContext.Remove(Selected);
+            DbProvider.DbContext.Remove(Selected);
             Repos.Remove(Selected);
-            DbProvider.RepositoryDbContext.SaveChanges();
+            DbProvider.DbContext.SaveChanges();
         }
 
         public async void Edit()
@@ -106,8 +106,8 @@ namespace movie_database.ViewModels
                     oldRepo.Name = newRepo.Name;
                     oldRepo.Path = newRepo.Path;
                     oldRepo.RepositoryType = newRepo.RepositoryType;
-                    DbProvider.RepositoryDbContext.Update(oldRepo);
-                    DbProvider.RepositoryDbContext.SaveChanges();
+                    DbProvider.DbContext.Update(oldRepo);
+                    DbProvider.DbContext.SaveChanges();
                 }
             }
         }
@@ -126,8 +126,8 @@ namespace movie_database.ViewModels
                 {
                     var newRepo = (Repository)repo;
                     Repos.Add(newRepo);
-                    DbProvider.RepositoryDbContext.Add(newRepo);
-                    DbProvider.RepositoryDbContext.SaveChanges();
+                    DbProvider.DbContext.Add(newRepo);
+                    DbProvider.DbContext.SaveChanges();
                 }
             }
         }

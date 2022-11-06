@@ -13,7 +13,9 @@ namespace MovieDatabaseDAL.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public List<TVSeriesEpisode> Episodes { get; set; }
+        public int MetadataId { get; set; }
         public TVSeriesMetadata Metadata { get; set; }
+        public List<Genre> Genres { get; set; }
 
         public TVSeries(string name, List<TVSeriesEpisode> episodes, TVSeriesMetadata metadata)
         {

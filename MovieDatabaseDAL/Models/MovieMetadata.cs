@@ -51,6 +51,8 @@ namespace MovieDatabaseDAL.Models
         [JsonProperty("vote_count")]
         public int VoteCount { get; set; }
 
+        public virtual Movie? Movie { get; set; }
+
         public MovieMetadata(int tmdbId, string backdropPath,
             string originalLanguage, string originalTitle, string overview, double popularity,
             string posterPath, string releaseDate, string title, double voteAverage, int voteCount)

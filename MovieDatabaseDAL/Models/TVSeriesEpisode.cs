@@ -43,6 +43,7 @@ namespace MovieDatabaseDAL.Models
 
         [JsonProperty("vote_count")]
         public int VoteCount { get; set; }
+        public TVSeries TvSeries { get; set; }
 
         public TVSeriesEpisode(string airDate, int episodeNumber, string name, string overview,
             int tmdbId, int runtime, int seasonNumber, string stillPath, double voteAverage, int voteCount)

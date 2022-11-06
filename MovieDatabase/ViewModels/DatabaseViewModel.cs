@@ -1,7 +1,6 @@
 ﻿using Avalonia.Controls.ApplicationLifetimes;
 using MovieDatabaseDAL;
 using MovieDatabaseDAL.Models;
-using MovieDatabaseDAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 using movie_database.Views;
 using ReactiveUI;
@@ -97,40 +96,40 @@ namespace movie_database.ViewModels
         public async void ReloadMovies()
         {
             Movies = new();
-            var repos = await DbProvider.RepositoryDbContext.Repository.Where(x => x.RepositoryType == RepositoryType.Movie).ToListAsync();
+            var repos = await DbProvider.DbContext.Repository.Where(x => x.RepositoryType == RepositoryType.Movie).ToListAsync();
             foreach(var repo in repos)
             {
                 var movies = await RepositoryDiscoverer.DiscoverFilmRepository(repo.Path);
                 foreach(var movie in movies)
                 {
-                    if (!DbProvider.MovieDbContext.Movie.Any(m => m.Name == movie.Name))
+                    if (!DbProvider.DbContext.Movies.Any(m => m.Name == movie.Name))
                     {
-                        DbProvider.MovieDbContext.Add(movie);
+                        DbProvider.DbContext.Add(movie);
                     }
                     Movies.Add(new(movie));
                 } 
             }
             LoadCovers(new CancellationToken());
-            DbProvider.MovieDbContext.SaveChanges();
+            DbProvider.DbContext.SaveChanges();
         }
 
         public async void ReloadTVs()
         {
             TVSeries = new();
-            var repos = await DbProvider.RepositoryDbContext.Repository.Where(x => x.RepositoryType == RepositoryType.TVSeries).ToListAsync();
+            var repos = await DbProvider.DbContext.Repository.Where(x => x.RepositoryType == RepositoryType.TVSeries).ToListAsync();
             foreach(var repo in repos)
             {
                 var tvs = await RepositoryDiscoverer.DiscoverTVRepository(repo.Path);
                 foreach(var tv in tvs)
                 {
-                    if (!DbProvider.TVSeriesDbContext.TVSeries.Any(s => s.Name == tv.Name))
+                    if (!DbProvider.DbContext.TVSeries.Any(s => s.Name == tv.Name))
                     {
-                        DbProvider.TVSeriesDbContext.Add(tv);
+                        DbProvider.DbContext.Add(tv);
                     }                                                                         
                     TVSeries.Add(new(tv));
                 }
             }
-            DbProvider.TVSeriesDbContext.SaveChangesAsync();
+            DbProvider.DbContext.SaveChangesAsync();
         }
 
         public ObservableCollection<MovieViewModel> Movies { get; set; } = new();

@@ -12,7 +12,9 @@ namespace MovieDatabaseDAL.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int MovieMetadataId { get; set; }
         public MovieMetadata? Metadata { get; set; }
+        public List<Genre> Genres { get; set; }
 
         public Movie(string name, MovieMetadata? metadata)
         {

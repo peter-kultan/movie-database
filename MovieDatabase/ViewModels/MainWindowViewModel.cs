@@ -2,7 +2,6 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using MovieDatabaseDAL;
 using MovieDatabaseDAL.Models;
-using MovieDatabaseDAL.Repositories;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.EntityFrameworkCore;
 using movie_database.Commands;
