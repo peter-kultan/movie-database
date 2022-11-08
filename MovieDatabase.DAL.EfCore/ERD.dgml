@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Database" Category="Database" Bounds="-309.218996462389,-261.728039032695,856.193816121419,774.180078604126" Group="Expanded" Label="movieDB.db" />
+    <Node Id="Genre" Category="Table" Bounds="-36.2787359334786,20.0428365805855,91.6966666666667,141.9203" Group="Expanded" Label="Genre" UseManualLocation="True" />
+    <Node Id="GenreMovie" Category="Table" Bounds="-246.138105497771,-200.210636588295,108.09,141.92" Group="Expanded" Label="GenreMovie" UseManualLocation="True" />
+    <Node Id="GenreMovie_GenresId" Category="Field Primary" Bounds="-226.138108346079,-160.210136956134,67.1033333333333,25.96" Description="bigint" Label="GenresId" />
+    <Node Id="GenreMovie_MoviesId" Category="Field Primary" Bounds="-226.138109770232,-104.250137871661,68.09,25.96" Description="bigint" Label="MoviesId" />
+    <Node Id="GenreTVSeries" Category="Table" Bounds="-5.44166998545307,-184.170107671578,116.843333333333,141.9203" Group="Expanded" Label="GenreTVSeries" />
+    <Node Id="GenreTVSeries_GenresId" Category="Field Primary" Bounds="15.3033300145469,-144.170007671578,67.1033333333334,25.96" Description="bigint" Label="GenresId" />
+    <Node Id="GenreTVSeries_TVSeriesId" Category="Field Primary" Bounds="15.3033300145469,-88.2099076715779,75.3533333333334,25.96" Description="bigint" Label="TVSeriesId" />
+    <Node Id="Genre_Id" Category="Field Primary" Bounds="-16.278733097887,60.0429381464919,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="Genre_Name" Category="Field" Bounds="-16.2787359334786,116.003040227791,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="MovieMetadata" Category="Table" Bounds="-289.21899728322,216.601543293507,358.806681925456,253.840530517578" Group="Expanded" Label="MovieMetadata" UseManualLocation="True" />
+    <Node Id="MovieMetadata_BackdropPath" Category="Field" Bounds="-269.218997079769,424.481973811084,93.09,25.96" Description="text" Label="BackdropPath" />
+    <Node Id="MovieMetadata_Id" Category="Field Primary" Bounds="-269.21899728322,256.601680297852,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="MovieMetadata_OriginalLanguage" Category="Field" Bounds="-146.128967681169,424.481976831055,113.756666666667,25.96" Description="text" Label="OriginalLanguage" />
+    <Node Id="MovieMetadata_OriginalTitle" Category="Field" Bounds="-269.218996367692,368.521873811084,84.3466666666667,25.96" Description="text" Label="OriginalTitle" />
+    <Node Id="MovieMetadata_Overview" Category="Field" Bounds="-19.2589820244308,256.601660285694,68.8466666666667,25.96" Description="text" Label="Overview" />
+    <Node Id="MovieMetadata_Popularity" Category="Field" Bounds="-269.218995808204,312.561763305664,73.1166666666667,25.96" Description="real" Label="Popularity" />
+    <Node Id="MovieMetadata_PosterPath" Category="Field" Bounds="-59.932308084408,312.561760285694,76.19,25.96" Description="text" Label="PosterPath" />
+    <Node Id="MovieMetadata_ReleaseDate" Category="Field" Bounds="-154.872317290544,368.521873811084,84.6266666666667,25.96" Description="text" Label="ReleaseDate" />
+    <Node Id="MovieMetadata_Title" Category="Field" Bounds="-189.218982024431,256.601660285694,50,25.96" Description="text" Label="Title" />
+    <Node Id="MovieMetadata_TmdbId" Category="Field" Bounds="-109.218982024431,256.601660285694,59.96,25.96" Description="bigint" Label="TmdbId" />
+    <Node Id="MovieMetadata_VoteAverage" Category="Field" Bounds="-40.2456482841963,368.521876831055,87.2166666666667,25.96" Description="real" Label="VoteAverage" />
+    <Node Id="MovieMetadata_VoteCount" Category="Field" Bounds="-166.10232746307,312.561760285694,76.17,25.96" Description="bigint" Label="VoteCount" />
+    <Node Id="Movies" Category="Table" Bounds="-278.169373452204,15.9368225498921,171.696666666667,141.92" Group="Expanded" Label="Movies" UseManualLocation="True" />
+    <Node Id="Movies_Id" Category="Field Primary" Bounds="-258.169373299616,55.9372315987009,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="Movies_MovieMetadataId" Category="Field Foreign" Bounds="-258.169373452204,111.897230683174,113.57,25.96" Description="bigint" Label="MovieMetadataId" />
+    <Node Id="Movies_Name" Category="Field" Bounds="-178.169373274185,55.9372315987009,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="Repository" Category="Table" Bounds="304.251489664714,66.6909795760475,222.723330485026,141.9203" Group="Expanded" Label="Repository" UseManualLocation="True" />
+    <Node Id="Repository_Id" Category="Field Primary" Bounds="324.251495361328,106.691079576048,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="Repository_Name" Category="Field" Bounds="324.251489664714,162.651179576048,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="Repository_Path" Category="Field" Bounds="404.251495361328,106.691079576048,50,25.96" Description="text" Label="Path" />
+    <Node Id="Repository_RepositoryType" Category="Field" Bounds="405.948153483073,162.651179576048,101.026666666667,25.96" Description="bigint" Label="RepositoryType" />
+    <Node Id="TVSeries" Category="Table" Bounds="99.5876846422359,65.4156056999552,171.696666666667,141.9203" Group="Expanded" Label="TVSeries" UseManualLocation="True" />
+    <Node Id="TVSeriesEpisode" Category="Table" Bounds="142.309994423028,-221.727906434695,351.340003255208,253.840512745667" Group="Expanded" Label="TVSeriesEpisode" />
+    <Node Id="TVSeriesEpisode_AirDate" Category="Field" Bounds="324.006660479343,-181.727806434695,59.6833333333333,25.96" Description="text" Label="AirDate" />
+    <Node Id="TVSeriesEpisode_EpisodeNumber" Category="Field" Bounds="293.586669024265,-13.8474936890282,105.103333333333,25.96" Description="bigint" Label="EpisodeNumber" />
+    <Node Id="TVSeriesEpisode_Id" Category="Field Primary" Bounds="162.309997558594,-181.727806434695,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="TVSeriesEpisode_Name" Category="Field" Bounds="242.309991861979,-181.727806434695,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="TVSeriesEpisode_Overview" Category="Field" Bounds="348.700018226739,-125.767696724001,68.8466666666666,25.96" Description="text" Label="Overview" />
+    <Node Id="TVSeriesEpisode_Runtime" Category="Field" Bounds="254.356676043308,-125.767696724001,64.3433333333333,25.96" Description="bigint" Label="Runtime" />
+    <Node Id="TVSeriesEpisode_SeasonNumber" Category="Field" Bounds="162.309999916192,-13.8474936890282,101.276666666667,25.96" Description="bigint" Label="SeasonNumber" />
+    <Node Id="TVSeriesEpisode_StillPath" Category="Field" Bounds="162.309994913737,-125.767696724001,62.0466666666667,25.96" Description="text" Label="StillPath" />
+    <Node Id="TVSeriesEpisode_TmdbId" Category="Field" Bounds="413.689997678236,-181.727806434695,59.96,25.96" Description="bigint" Label="TmdbId" />
+    <Node Id="TVSeriesEpisode_TvSeriesId" Category="Field Foreign" Bounds="162.309994913737,-69.8075967240013,72.7966666666667,25.96" Description="bigint" Label="TvSeriesId" />
+    <Node Id="TVSeriesEpisode_VoteAverage" Category="Field" Bounds="371.276675941582,-69.8075967240013,87.2166666666667,25.96" Description="real" Label="VoteAverage" />
+    <Node Id="TVSeriesEpisode_VoteCount" Category="Field" Bounds="265.106665158705,-69.8075967240013,76.17,25.96" Description="bigint" Label="VoteCount" />
+    <Node Id="TVSeriesMetadata" Category="Table" Bounds="100.934988350338,238.611379576048,362.090011444092,253.840527050781" Group="Expanded" Label="TVSeriesMetadata" />
+    <Node Id="TVSeriesMetadata_BackdropPath" Category="Field" Bounds="349.93499979443,390.531706626829,93.09,25.96" Description="text" Label="BackdropPath" />
+    <Node Id="TVSeriesMetadata_FirstAirDate" Category="Field" Bounds="120.934988350338,390.531706626829,81.7833333333333,25.96" Description="text" Label="FirstAirDate" />
+    <Node Id="TVSeriesMetadata_Id" Category="Field Primary" Bounds="120.934997558594,278.611479576048,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="TVSeriesMetadata_Name" Category="Field" Bounds="280.934991861979,278.611479576048,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="TVSeriesMetadata_OriginalLanguage" Category="Field" Bounds="244.535019632975,446.491806626829,113.756666666667,25.96" Description="text" Label="OriginalLanguage" />
+    <Node Id="TVSeriesMetadata_OriginalName" Category="Field" Bounds="120.935002028147,446.491806626829,93.6,25.96" Description="text" Label="OriginalName" />
+    <Node Id="TVSeriesMetadata_Overview" Category="Field" Bounds="362.631659342448,278.611479576048,68.8466666666666,25.96" Description="text" Label="Overview" />
+    <Node Id="TVSeriesMetadata_Popularity" Category="Field" Bounds="120.934998575846,334.571593101438,73.1166666666667,25.96" Description="real" Label="Popularity" />
+    <Node Id="TVSeriesMetadata_PosterPath" Category="Field" Bounds="330.221680908203,334.571593101438,76.19,25.96" Description="text" Label="PosterPath" />
+    <Node Id="TVSeriesMetadata_Tmdb" Category="Field" Bounds="200.934997558594,278.611479576048,50,25.96" Description="bigint" Label="Tmdb" />
+    <Node Id="TVSeriesMetadata_VoteAverage" Category="Field" Bounds="232.718333127763,390.531706626829,87.2166666666667,25.96" Description="real" Label="VoteAverage" />
+    <Node Id="TVSeriesMetadata_VoteCount" Category="Field" Bounds="224.051672973633,334.571593101438,76.17,25.96" Description="bigint" Label="VoteCount" />
+    <Node Id="TVSeries_Id" Category="Field Primary" Bounds="119.587684642236,105.415705699955,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="TVSeries_MetadataId" Category="Field Foreign" Bounds="119.587693543196,161.375805699955,80.8333333333333,25.96" Description="bigint" Label="MetadataId" />
+    <Node Id="TVSeries_Name" Category="Field" Bounds="199.587684642236,105.415705699955,51.6966666666667,25.96" Description="text" Label="Name" />
+  </Nodes>
+  <Links>
+    <Link Source="Database" Target="Genre" Category="Contains" />
+    <Link Source="Database" Target="GenreMovie" Category="Contains" />
+    <Link Source="Database" Target="GenreTVSeries" Category="Contains" />
+    <Link Source="Database" Target="MovieMetadata" Category="Contains" />
+    <Link Source="Database" Target="Movies" Category="Contains" />
+    <Link Source="Database" Target="Repository" Category="Contains" />
+    <Link Source="Database" Target="TVSeries" Category="Contains" />
+    <Link Source="Database" Target="TVSeriesEpisode" Category="Contains" />
+    <Link Source="Database" Target="TVSeriesMetadata" Category="Contains" />
+    <Link Source="Genre" Target="Genre_Id" Category="Contains" />
+    <Link Source="Genre" Target="Genre_Name" Category="Contains" />
+    <Link Source="GenreMovie" Target="GenreMovie_GenresId" Category="Contains" />
+    <Link Source="GenreMovie" Target="GenreMovie_MoviesId" Category="Contains" />
+    <Link Source="GenreMovie_GenresId" Target="Genre_Id" Category="Foreign Key" Label="FK_GenreMovie_1_0" />
+    <Link Source="GenreMovie_MoviesId" Target="Movies_Id" Category="Foreign Key" Label="FK_GenreMovie_0_0" />
+    <Link Source="GenreTVSeries" Target="GenreTVSeries_GenresId" Category="Contains" />
+    <Link Source="GenreTVSeries" Target="GenreTVSeries_TVSeriesId" Category="Contains" />
+    <Link Source="GenreTVSeries_GenresId" Target="Genre_Id" Category="Foreign Key" Label="FK_GenreTVSeries_1_0" />
+    <Link Source="GenreTVSeries_TVSeriesId" Target="TVSeries_Id" Category="Foreign Key" Label="FK_GenreTVSeries_0_0" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_BackdropPath" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_Id" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_OriginalLanguage" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_OriginalTitle" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_Overview" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_Popularity" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_PosterPath" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_ReleaseDate" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_Title" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_TmdbId" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_VoteAverage" Category="Contains" />
+    <Link Source="MovieMetadata" Target="MovieMetadata_VoteCount" Category="Contains" />
+    <Link Source="Movies" Target="Movies_Id" Category="Contains" />
+    <Link Source="Movies" Target="Movies_MovieMetadataId" Category="Contains" />
+    <Link Source="Movies" Target="Movies_Name" Category="Contains" />
+    <Link Source="Movies_MovieMetadataId" Target="MovieMetadata_Id" Category="Foreign Key" Label="FK_Movies_0_0" />
+    <Link Source="Repository" Target="Repository_Id" Category="Contains" />
+    <Link Source="Repository" Target="Repository_Name" Category="Contains" />
+    <Link Source="Repository" Target="Repository_Path" Category="Contains" />
+    <Link Source="Repository" Target="Repository_RepositoryType" Category="Contains" />
+    <Link Source="TVSeries" Target="TVSeries_Id" Category="Contains" />
+    <Link Source="TVSeries" Target="TVSeries_MetadataId" Category="Contains" />
+    <Link Source="TVSeries" Target="TVSeries_Name" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_AirDate" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_EpisodeNumber" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_Id" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_Name" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_Overview" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_Runtime" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_SeasonNumber" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_StillPath" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_TmdbId" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_TvSeriesId" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_VoteAverage" Category="Contains" />
+    <Link Source="TVSeriesEpisode" Target="TVSeriesEpisode_VoteCount" Category="Contains" />
+    <Link Source="TVSeriesEpisode_TvSeriesId" Target="TVSeries_Id" Category="Foreign Key" Label="FK_TVSeriesEpisode_0_0" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_BackdropPath" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_FirstAirDate" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_Id" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_Name" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_OriginalLanguage" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_OriginalName" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_Overview" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_Popularity" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_PosterPath" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_Tmdb" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_VoteAverage" Category="Contains" />
+    <Link Source="TVSeriesMetadata" Target="TVSeriesMetadata_VoteCount" Category="Contains" />
+    <Link Source="TVSeries_MetadataId" Target="TVSeriesMetadata_Id" Category="Foreign Key" Label="FK_TVSeries_0_0" />
+  </Links>
+  <Categories>
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="Database" />
+    <Category Id="Field" />
+    <Category Id="Field Foreign" />
+    <Category Id="Field Primary" />
+    <Category Id="Foreign Key" />
+    <Category Id="Table" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Description" Label="Description" Description="Description" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Table" ValueLabel="True">
+      <Condition Expression="HasCategory('Table')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Schema" ValueLabel="True">
+      <Condition Expression="HasCategory('Schema')" />
+      <Setter Property="Background" Value="#FF7F9169" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Primary" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Primary')" />
+      <Setter Property="Background" Value="#FF008000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Optional" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Optional')" />
+      <Setter Property="Background" Value="#FF808040" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Foreign" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Foreign')" />
+      <Setter Property="Background" Value="#FF8080FF" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field" ValueLabel="True">
+      <Condition Expression="HasCategory('Field')" />
+      <Setter Property="Background" Value="#FFC0A000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Database" ValueLabel="True">
+      <Condition Expression="HasCategory('Database')" />
+      <Setter Property="Background" Value="#FFFFFFFF" />
+    </Style>
+  </Styles>
+</DirectedGraph>
