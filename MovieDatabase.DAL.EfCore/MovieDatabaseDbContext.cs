@@ -15,6 +15,10 @@ namespace MovieDatabaseDAL
         public DbSet<Repository> Repository { get; set; }
         public DbSet<TVSeries> TVSeries { get; set; }
 
+        public MovieDatabaseDbContext(DbContextOptions<MovieDatabaseDbContext> options) : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
