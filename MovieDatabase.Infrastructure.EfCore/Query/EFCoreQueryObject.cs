@@ -15,6 +15,7 @@ namespace MovieDatabase.Infrastructure.EfCore.Query
         public EFCoreQueryObject(DbContext dbContext)
         {
             _dbContext = dbContext;
+            _query = _dbContext.Set<TEntity>().AsQueryable();
         }
 
         public override async Task<IEnumerable<TEntity>> ExecuteAsync()

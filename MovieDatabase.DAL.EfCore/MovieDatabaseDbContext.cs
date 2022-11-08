@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using MovieDatabase.DAL.EfCore.Models;
 
@@ -17,7 +18,7 @@ namespace MovieDatabase.DAL.EfCore
         public DbSet<TVSeries> TVSeries { get; set; }
         public DbSet<TVSeriesMetadata> TVSeriesMetadata { get; set; }
 
-        public MovieDatabaseDbContext() 
+        public MovieDatabaseDbContext() : base(Init())
         {
         }
 
@@ -25,10 +26,17 @@ namespace MovieDatabase.DAL.EfCore
         {
         }
 
+        public static DbContextOptions Init()
+        {
+            var connection = new SqliteConnection(@"Data Source=..\..\..\..\MovieDatabase.DAL.EfCore\movieDB.db");
+
+            connection.Open();
+
+            return new DbContextOptionsBuilder<MovieDatabaseDbContext>().UseSqlite(connection).Options;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseSqlite(@"Data Source=movieDB.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
