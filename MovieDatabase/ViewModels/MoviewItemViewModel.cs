@@ -1,5 +1,5 @@
 ﻿using Avalonia.Media.Imaging;
-using MovieDatabaseDAL;
+using MovieDatabase.DAL.EfCore;
 using MovieDatabase.DAL.EfCore.Models;
 using ReactiveUI;
 using System;

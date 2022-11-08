@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MovieDatabase.DAL.EfCore.Models;
 
-namespace MovieDatabaseDAL
+namespace MovieDatabase.DAL.EfCore
 {
     public class MovieDatabaseDbContext : DbContext
     {
@@ -17,11 +17,13 @@ namespace MovieDatabaseDAL
         public DbSet<TVSeries> TVSeries { get; set; }
         public DbSet<TVSeriesMetadata> TVSeriesMetadata { get; set; }
 
-        public MovieDatabaseDbContext(DbContextOptions<MovieDatabaseDbContext> options) : base(options)
+        public MovieDatabaseDbContext() 
         {
         }
 
-        public MovieDatabaseDbContext() { }
+        public MovieDatabaseDbContext(DbContextOptions<MovieDatabaseDbContext> options) : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

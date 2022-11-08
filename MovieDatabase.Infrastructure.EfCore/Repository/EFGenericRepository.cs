@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieDatabase.Infrastructure.Repository;
-using MovieDatabaseDAL;
+using MovieDatabase.DAL.EfCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace MovieDatabaseDAL
+namespace MovieDatabase.DAL.EfCore
 {
     public static class Utils
     {

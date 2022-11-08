@@ -1,7 +1,7 @@
 ﻿using MovieDatabase.Infrastructure.EfCore.Repository;
 using MovieDatabase.Infrastructure.Repository;
 using MovieDatabase.Infrastructure.UnitOfWork;
-using MovieDatabaseDAL;
+using MovieDatabase.DAL.EfCore;
 using MovieDatabase.DAL.EfCore.Models;
 
 namespace MovieDatabase.Infrastructure.EfCore.UnitOfWork

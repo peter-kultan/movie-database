@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieDatabaseDAL
+namespace MovieDatabase.DAL.EfCore
 
 {
     public static class RepositoryDiscoverer

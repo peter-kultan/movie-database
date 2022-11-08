@@ -1,5 +1,5 @@
 ﻿using Avalonia.Controls.ApplicationLifetimes;
-using MovieDatabaseDAL;
+using MovieDatabase.DAL.EfCore;
 using MovieDatabase.DAL.EfCore.Models;
 using Microsoft.EntityFrameworkCore;
 using MovieDatabase.Views;
