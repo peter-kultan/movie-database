@@ -2,7 +2,7 @@
 using MovieDatabase.Infrastructure.Repository;
 using MovieDatabase.Infrastructure.UnitOfWork;
 using MovieDatabaseDAL;
-using MovieDatabaseDAL.Models;
+using MovieDatabase.DAL.EfCore.Models;
 
 namespace MovieDatabase.Infrastructure.EfCore.UnitOfWork
 {
@@ -26,7 +26,7 @@ namespace MovieDatabase.Infrastructure.EfCore.UnitOfWork
 
             GenreRepository = new EFGenericRepository<Genre>(DbContext);
 
-            RepositoryRepository = new EFGenericRepository<MovieDatabaseDAL.Models.Repository>(DbContext);
+            RepositoryRepository = new EFGenericRepository<MovieDatabase.DAL.EfCore.Models.Repository>(DbContext);
         }
 
         private IRepository<Movie> MovieRepository;
@@ -41,7 +41,7 @@ namespace MovieDatabase.Infrastructure.EfCore.UnitOfWork
 
         private IRepository<Genre> GenreRepository;
 
-        private IRepository<MovieDatabaseDAL.Models.Repository> RepositoryRepository;
+        private IRepository<MovieDatabase.DAL.EfCore.Models.Repository> RepositoryRepository;
 
         
 

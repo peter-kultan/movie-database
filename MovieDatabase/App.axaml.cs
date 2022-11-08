@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using movie_database.ViewModels;
-using movie_database.Views;
+using MovieDatabase.ViewModels;
+using MovieDatabase.Views;
 
-namespace movie_database
+namespace MovieDatabase
 {
     public partial class App : Application
     {

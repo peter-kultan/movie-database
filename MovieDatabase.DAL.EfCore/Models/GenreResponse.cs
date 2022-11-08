@@ -1,11 +1,11 @@
-﻿using MovieDatabaseDAL.Models;
+﻿using MovieDatabase.DAL.EfCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieDatabaseDAL.Api
+namespace MovieDatabase.DAL.EfCore.Api
 {
     public class GenreResponse
     {

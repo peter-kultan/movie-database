@@ -1,4 +1,5 @@
-﻿using MovieDatabaseDAL.Models;
+﻿using MovieDatabase.DAL.EfCore.Api;
+using MovieDatabase.DAL.EfCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace MovieDatabaseDAL
             foreach (var file in GetVideoFiles(path))
             {
                 var fileName = Path.GetFileName(file);
-                var result = await Api.ApiController.GetMovies("https://api.themoviedb.org/3/search/movie", new Dictionary<string, string>() { { "api_key", Utils.LoadSettings().ApiKey }, { "query", Utils.ParseName(fileName) } });
+                var result = await ApiController.GetMovies("https://api.themoviedb.org/3/search/movie", new Dictionary<string, string>() { { "api_key", Utils.LoadSettings().ApiKey }, { "query", Utils.ParseName(fileName) } });
                 if (result.TotalResults == 0)
                 {
                     movies.Add(new(fileName, null));
@@ -47,7 +48,7 @@ namespace MovieDatabaseDAL
             foreach (var tv in Directory.GetDirectories(path))
             {
                 var dirName = Utils.ParseName($"{Path.GetFileName(tv)}.mp4");
-                var res = await Api.ApiController.GetTVSeries("https://api.themoviedb.org/3/search/tv", new Dictionary<string, string>() { { "api_key", Utils.LoadSettings().ApiKey }, { "query", dirName  } });
+                var res = await ApiController.GetTVSeries("https://api.themoviedb.org/3/search/tv", new Dictionary<string, string>() { { "api_key", Utils.LoadSettings().ApiKey }, { "query", dirName  } });
                 if (res.Results.Count == 0)
                 {
                     series.Add(new());
@@ -73,7 +74,7 @@ namespace MovieDatabaseDAL
             tuples.AddRange(firstTuples);
             foreach(var tup in tuples)
             {
-                var episode = await Api.ApiController.GetTVSeriesEpisode($"https://api.themoviedb.org/3/tv/{tmdbId}/season/{tup.Item1}/episode/{tup.Item2}", new() { { "api_key", Utils.LoadSettings().ApiKey } });
+                var episode = await ApiController.GetTVSeriesEpisode($"https://api.themoviedb.org/3/tv/{tmdbId}/season/{tup.Item1}/episode/{tup.Item2}", new() { { "api_key", Utils.LoadSettings().ApiKey } });
                 if (episode.TmdbId != 0)
                 {
                     episodes.Add(episode);

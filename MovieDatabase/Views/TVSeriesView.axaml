@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="328"
-             x:Class="movie_database.Views.TVSeriesView">
+             x:Class="MovieDatabase.Views.TVSeriesView">
 	<StackPanel Spacing="5" Width="200">
 		<Border CornerRadius="10" ClipToBounds="True">
 			<Panel Background="#363636">

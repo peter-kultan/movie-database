@@ -1,9 +1,9 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:movie_database"
-			 xmlns:localVies="using:movie_database.Views"
-			 xmlns:localViewModels="using:movie_database.ViewModels"
-             x:Class="movie_database.App">
+             xmlns:local="using:MovieDatabase"
+			 xmlns:localVies="using:MovieDatabase.Views"
+			 xmlns:localViewModels="using:MovieDatabase.ViewModels"
+             x:Class="MovieDatabase.App">
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>

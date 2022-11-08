@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace MovieDatabaseDAL.Models
+namespace MovieDatabase.DAL.EfCore.Models
 {
     public class Settings
     {

@@ -1,4 +1,5 @@
-﻿using MovieDatabaseDAL.Models;
+﻿using MovieDatabase.DAL.EfCore.Api;
+using MovieDatabase.DAL.EfCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace MovieDatabaseDAL
         public static async Task<List<Genre>> GetGenres(bool movie)
         {
             var part = movie ? "movie" : "tv";
-            return (await Api.ApiController.GetGenres($"https://api.themoviedb.org/3/genre/{part}/list", new Dictionary<string, string>() { { "api_key", LoadSettings().ApiKey } })).Genres;
+            return (await ApiController.GetGenres($"https://api.themoviedb.org/3/genre/{part}/list", new Dictionary<string, string>() { { "api_key", LoadSettings().ApiKey } })).Genres;
         }
 
         public static string ParseName(string name)

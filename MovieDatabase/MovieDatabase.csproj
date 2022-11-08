@@ -6,7 +6,7 @@
     <!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
     <TrimMode>copyused</TrimMode>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-    <RootNamespace>movie_database</RootNamespace>
+    <RootNamespace>MovieDatabase</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
@@ -32,8 +32,7 @@
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MovieDatabaseDAL\MovieDatabaseDAL.csproj" />
-    <ProjectReference Include="..\MovieDatabaseDAL\MovieDatabaseDAL.csproj" />
+    <ProjectReference Include="..\MovieDatabase.DAL.EfCore\MovieDatabase.DAL.EfCore.csproj" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaXaml Update="Assets\Icons.axaml">

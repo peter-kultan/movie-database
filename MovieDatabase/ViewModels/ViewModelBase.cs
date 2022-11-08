@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace movie_database.ViewModels
+namespace MovieDatabase.ViewModels
 {
     public class ViewModelBase : ReactiveObject
     {

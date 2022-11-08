@@ -1,4 +1,4 @@
-﻿using movie_database.ViewModels;
+﻿using MovieDatabase.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace movie_database.Commands
+namespace MovieDatabase.Commands
 {
     public class UpdateViewCommand : ICommand
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieDatabaseDAL.Models
+namespace MovieDatabase.DAL.EfCore.Models
 {    
     public enum RepositoryType
     {

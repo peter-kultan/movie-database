@@ -1,9 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using movie_database.ViewModels;
+using MovieDatabase.ViewModels;
 using System;
 
-namespace movie_database
+namespace MovieDatabase
 {
     public class ViewLocator : IDataTemplate
     {

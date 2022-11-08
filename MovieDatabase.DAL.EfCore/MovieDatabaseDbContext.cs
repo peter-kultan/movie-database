@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MovieDatabaseDAL.Models;
+using MovieDatabase.DAL.EfCore.Models;
 
 namespace MovieDatabaseDAL
 {
@@ -12,12 +12,16 @@ namespace MovieDatabaseDAL
     {
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<MovieMetadata> MoviesMetadata { get; set; }
         public DbSet<Repository> Repository { get; set; }
         public DbSet<TVSeries> TVSeries { get; set; }
+        public DbSet<TVSeriesMetadata> TVSeriesMetadata { get; set; }
 
         public MovieDatabaseDbContext(DbContextOptions<MovieDatabaseDbContext> options) : base(options)
         {
         }
+
+        public MovieDatabaseDbContext() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

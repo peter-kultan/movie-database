@@ -1,11 +1,11 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using MovieDatabaseDAL;
-using MovieDatabaseDAL.Models;
+using MovieDatabase.DAL.EfCore.Models;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.EntityFrameworkCore;
-using movie_database.Commands;
-using movie_database.Views;
+using MovieDatabase.Commands;
+using MovieDatabase.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Input;
 
-namespace movie_database.ViewModels
+namespace MovieDatabase.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {

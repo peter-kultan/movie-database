@@ -1,9 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using movie_database.ViewModels;
+using MovieDatabase.ViewModels;
 
-namespace movie_database.Views
+namespace MovieDatabase.Views
 {
     public partial class MainWindow : Window
     {

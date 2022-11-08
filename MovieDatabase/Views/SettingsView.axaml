@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="movie_database.Views.SettingsView">
+             x:Class="MovieDatabase.Views.SettingsView">
 	<Grid>
 		<Button Command="{Binding BackCommand}" Content="Back" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="Transparent" BorderThickness="1" Height="50" Width="65"/>
 		<TabControl TabStripPlacement="Left">

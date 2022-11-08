@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MovieDatabaseDAL.Migrations
+namespace MovieDatabase.DAL.EfCore.Migrations
 {
     public partial class Initial : Migration
     {

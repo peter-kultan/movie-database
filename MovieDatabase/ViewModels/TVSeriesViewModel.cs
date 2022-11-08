@@ -1,5 +1,5 @@
 ﻿using Avalonia.Media.Imaging;
-using MovieDatabaseDAL.Models;
+using MovieDatabase.DAL.EfCore.Models;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace movie_database.ViewModels
+namespace MovieDatabase.ViewModels
 {
     public class TVSeriesViewModel : ViewModelBase
     {

@@ -1,8 +1,8 @@
 ﻿using Avalonia.Controls.ApplicationLifetimes;
 using MovieDatabaseDAL;
-using MovieDatabaseDAL.Models;
+using MovieDatabase.DAL.EfCore.Models;
 using Microsoft.EntityFrameworkCore;
-using movie_database.Views;
+using MovieDatabase.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace movie_database.ViewModels
+namespace MovieDatabase.ViewModels
 {
     public class DatabaseViewModel : ViewModelBase
     {

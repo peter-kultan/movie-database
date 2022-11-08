@@ -7,7 +7,7 @@ using MovieDatabaseDAL;
 
 #nullable disable
 
-namespace MovieDatabaseDAL.Migrations
+namespace MovieDatabase.DAL.EfCore.Migrations
 {
     [DbContext(typeof(MovieDatabaseDbContext))]
     [Migration("20221106170651_Initial")]
@@ -48,7 +48,7 @@ namespace MovieDatabaseDAL.Migrations
                     b.ToTable("GenreTVSeries");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.Genre", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.Genre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace MovieDatabaseDAL.Migrations
                     b.ToTable("Genre");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.Movie", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,7 +84,7 @@ namespace MovieDatabaseDAL.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.MovieMetadata", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.MovieMetadata", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -135,7 +135,7 @@ namespace MovieDatabaseDAL.Migrations
                     b.ToTable("MovieMetadata");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.Repository", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.Repository", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -157,7 +157,7 @@ namespace MovieDatabaseDAL.Migrations
                     b.ToTable("Repository");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.TVSeries", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.TVSeries", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -178,7 +178,7 @@ namespace MovieDatabaseDAL.Migrations
                     b.ToTable("TVSeries");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.TVSeriesEpisode", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.TVSeriesEpisode", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -228,7 +228,7 @@ namespace MovieDatabaseDAL.Migrations
                     b.ToTable("TVSeriesEpisode");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.TVSeriesMetadata", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.TVSeriesMetadata", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -281,13 +281,13 @@ namespace MovieDatabaseDAL.Migrations
 
             modelBuilder.Entity("GenreMovie", b =>
                 {
-                    b.HasOne("MovieDatabaseDAL.Models.Genre", null)
+                    b.HasOne("MovieDatabase.DAL.EfCore.Models.Genre", null)
                         .WithMany()
                         .HasForeignKey("GenresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MovieDatabaseDAL.Models.Movie", null)
+                    b.HasOne("MovieDatabase.DAL.EfCore.Models.Movie", null)
                         .WithMany()
                         .HasForeignKey("MoviesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -296,44 +296,44 @@ namespace MovieDatabaseDAL.Migrations
 
             modelBuilder.Entity("GenreTVSeries", b =>
                 {
-                    b.HasOne("MovieDatabaseDAL.Models.Genre", null)
+                    b.HasOne("MovieDatabase.DAL.EfCore.Models.Genre", null)
                         .WithMany()
                         .HasForeignKey("GenresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MovieDatabaseDAL.Models.TVSeries", null)
+                    b.HasOne("MovieDatabase.DAL.EfCore.Models.TVSeries", null)
                         .WithMany()
                         .HasForeignKey("TVSeriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.Movie", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.Movie", b =>
                 {
-                    b.HasOne("MovieDatabaseDAL.Models.MovieMetadata", "Metadata")
+                    b.HasOne("MovieDatabase.DAL.EfCore.Models.MovieMetadata", "Metadata")
                         .WithOne("Movie")
-                        .HasForeignKey("MovieDatabaseDAL.Models.Movie", "MovieMetadataId")
+                        .HasForeignKey("MovieDatabase.DAL.EfCore.Models.Movie", "MovieMetadataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Metadata");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.TVSeries", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.TVSeries", b =>
                 {
-                    b.HasOne("MovieDatabaseDAL.Models.TVSeriesMetadata", "Metadata")
+                    b.HasOne("MovieDatabase.DAL.EfCore.Models.TVSeriesMetadata", "Metadata")
                         .WithOne("TvSeries")
-                        .HasForeignKey("MovieDatabaseDAL.Models.TVSeries", "MetadataId")
+                        .HasForeignKey("MovieDatabase.DAL.EfCore.Models.TVSeries", "MetadataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Metadata");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.TVSeriesEpisode", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.TVSeriesEpisode", b =>
                 {
-                    b.HasOne("MovieDatabaseDAL.Models.TVSeries", "TvSeries")
+                    b.HasOne("MovieDatabase.DAL.EfCore.Models.TVSeries", "TvSeries")
                         .WithMany("Episodes")
                         .HasForeignKey("TvSeriesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -342,17 +342,17 @@ namespace MovieDatabaseDAL.Migrations
                     b.Navigation("TvSeries");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.MovieMetadata", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.MovieMetadata", b =>
                 {
                     b.Navigation("Movie");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.TVSeries", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.TVSeries", b =>
                 {
                     b.Navigation("Episodes");
                 });
 
-            modelBuilder.Entity("MovieDatabaseDAL.Models.TVSeriesMetadata", b =>
+            modelBuilder.Entity("MovieDatabase.DAL.EfCore.Models.TVSeriesMetadata", b =>
                 {
                     b.Navigation("TvSeries")
                         .IsRequired();
