@@ -28,6 +28,7 @@ namespace MovieDatabase.DAL.EfCore
 
         public static DbContextOptions Init()
         {
+            // TODO: add this to cfg file
             var connection = new SqliteConnection(@"Data Source=..\..\..\..\MovieDatabase.DAL.EfCore\movieDB.db");
 
             connection.Open();
