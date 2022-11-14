@@ -29,7 +29,7 @@ namespace MovieDatabase.DAL.EfCore
         public static DbContextOptions Init()
         {
             // TODO: add this to cfg file
-            var connection = new SqliteConnection(@"Data Source=..\..\..\..\MovieDatabase.DAL.EfCore\movieDB.db");
+            var connection = new SqliteConnection(@"Data Source=movieDB.db");
 
             connection.Open();
 
@@ -58,8 +58,12 @@ namespace MovieDatabase.DAL.EfCore
                 .HasMany(tv => tv.Episodes)
                 .WithOne(e => e.TvSeries);
 
-            modelBuilder.Entity<Genre>().
-                HasMany(mg => mg.TVSeries)
+            modelBuilder.Entity<TVSeriesMetadata>()
+                .HasMany(tv => tv.OriginCountries)
+                .WithMany(c => c.Series);
+
+            modelBuilder.Entity<Genre>()
+                .HasMany(mg => mg.TVSeries)
                 .WithMany(tv => tv.Genres);
 
             modelBuilder.Entity<Genre>()

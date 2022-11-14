@@ -26,8 +26,7 @@ namespace MovieDatabase.DAL.EfCore.Models
         public string FirstAirDate { get; set; }
 
         [JsonProperty("origin_country")]
-        [NotMapped]
-        public List<string> OriginCountries { get; set; }
+        public List<Country> OriginCountries { get; set; }
 
         [JsonProperty("original_language")]
         public string OriginalLanguage { get; set; }
@@ -58,7 +57,7 @@ namespace MovieDatabase.DAL.EfCore.Models
             Tmdb = tmdb;
             BackdropPath = backdropPath;
             FirstAirDate = firstAirDate;
-            OriginCountries = originCountries;
+            OriginCountries = new();
             OriginalLanguage = originalLanguage;
             OriginalName = originalName;
             Overview = overview;
