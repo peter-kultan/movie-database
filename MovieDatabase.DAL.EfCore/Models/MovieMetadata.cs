@@ -23,6 +23,8 @@ namespace MovieDatabase.DAL.EfCore.Models
         [JsonProperty("genre_ids")]
         [NotMapped]
         public List<int> GenreIds { get; set; }
+
+        public virtual List<Genre> Genres { get; set; }
         
         [JsonProperty("original_language")]
         public string OriginalLanguage { get; set; }

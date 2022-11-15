@@ -18,6 +18,7 @@ namespace MovieDatabase.DAL.EfCore.Models
         public string Name { get; set; }
 
         public List<Movie> Movies { get; set; }
+
         public List<TVSeries> TVSeries { get; set; }
 
         public Genre(string name, List<Movie> movies, List<TVSeries> tVSeries)
