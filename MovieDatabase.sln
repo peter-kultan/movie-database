@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDatabase.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDatabase.BL", "MovieDatabase.BL\MovieDatabase.BL.csproj", "{9CE244EE-4935-4799-A3E3-16DC0D477B83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDatabaseShared", "MovieDatabaseShared\MovieDatabaseShared.csproj", "{D88E50EC-793D-423D-906B-2C20E54E642D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDatabase.Shared", "MovieDatabase.Shared\MovieDatabase.Shared.csproj", "{D88E50EC-793D-423D-906B-2C20E54E642D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
