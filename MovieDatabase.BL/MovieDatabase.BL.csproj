@@ -14,4 +14,8 @@
     <ProjectReference Include="..\MovieDatabase.Infrastructure\MovieDatabase.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Implementations\" />
+  </ItemGroup>
+
 </Project>
