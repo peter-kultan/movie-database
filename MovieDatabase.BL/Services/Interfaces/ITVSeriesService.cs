@@ -16,7 +16,7 @@ namespace MovieDatabase.BL.Services.Interfaces
         /// Returns all TV Series
         /// </summary>
         /// <returns>all tv series</returns>
-        Task<IEnumerable<TVSeriesAlbumViewDTO>> GetTVSeriesAlbumsAsync();
+        ICollection<TVSeriesAlbumViewDTO> GetTVSeriesAlbumsAsync();
 
         /// <summary>
         /// Returns paged TV Series
@@ -24,7 +24,7 @@ namespace MovieDatabase.BL.Services.Interfaces
         /// <param name="itemsInPage">number of items in one page</param>
         /// <param name="page">current page</param>
         /// <returns>paged TV Series</returns>
-        IEnumerable<TVSeriesAlbumViewDTO> GetTVSeriesAlbumsPaged(int itemsInPage, int page);
+        Task<ICollection<TVSeriesAlbumViewDTO>> GetTVSeriesAlbumsPaged(int itemsInPage, int page);
 
         /// <summary>
         /// Returns TV Series detail
