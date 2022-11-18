@@ -26,7 +26,7 @@ namespace MovieDatabase.Infrastructure.EfCore.Repository
             return dbSet.ToList();
         }
 
-        public TEntity GetById(int id)
+        public TEntity? GetById(int id)
         {
             return dbSet.Find(id);
         }
@@ -47,7 +47,9 @@ namespace MovieDatabase.Infrastructure.EfCore.Repository
         public async Task DeleteAsync(object id)
         {
             var entityToDelete = await dbSet.FindAsync(id);
-            Delete(entityToDelete);
+
+            if (entityToDelete != null)
+                Delete(entityToDelete);
         }
 
         public void Update(TEntity entityToUpdate)

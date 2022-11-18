@@ -10,7 +10,7 @@ namespace MovieDatabase.Infrastructure.Repository
     {
         ICollection<TEntity> GetAll();
 
-        TEntity GetById(int id);
+        TEntity? GetById(int id);
 
         void Insert(TEntity entity);
 
