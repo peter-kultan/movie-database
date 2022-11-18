@@ -11,12 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MovieDatabase.DAL.EfCore\MovieDatabase.DAL.EfCore.csproj" />
     <ProjectReference Include="..\MovieDatabase.Infrastructure\MovieDatabase.Infrastructure.csproj" />
     <ProjectReference Include="..\MovieDatabase.Shared\MovieDatabase.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Implementations\" />
   </ItemGroup>
 
 </Project>

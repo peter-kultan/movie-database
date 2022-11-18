@@ -14,7 +14,7 @@ namespace MovieDatabase.BL.Services.Interfaces
         /// Returns all Movies stored in database
         /// </summary>
         /// <returns>all movies stored in database</returns>
-        Task<IEnumerable<MovieAlbumViewDTO>> GetMovieAlbumsAsync();
+        ICollection<MovieAlbumViewDTO> GetMovieAlbumsAsync();
 
         /// <summary>
         /// Returns paged movies
@@ -22,7 +22,7 @@ namespace MovieDatabase.BL.Services.Interfaces
         /// <param name="itemsInPage">nomber of items in one page</param>
         /// <param name="page">current page</param>
         /// <returns>paged movies</returns>
-        IEnumerable<MovieAlbumViewDTO> GetMovieAlbumsPaged(int itemsInPage, int page);
+        Task<ICollection<MovieAlbumViewDTO>> GetMovieAlbumsPaged(int itemsInPage, int page);
 
         /// <summary>
         /// Returns detail of movie specified by id
