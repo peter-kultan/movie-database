@@ -42,6 +42,6 @@ namespace MovieDatabase.BL.Services.Interfaces
         /// <param name="itemsOnPage">number of repositories on one page</param>
         /// <param name="page">current page</param>
         /// <returns>paged repositories</returns>
-        ICollection<RepositoryCreateDTO> PageRepositories(int itemsOnPage, int page);
+        Task<ICollection<RepositoryCreateDTO>> PageRepositories(int itemsOnPage, int page);
     }
 }
