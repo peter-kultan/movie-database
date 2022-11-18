@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using MovieDatabase.DAL.EfCore.Models;
+using MovieDatabase.Shared.Enums;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
