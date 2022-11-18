@@ -21,6 +21,11 @@ namespace MovieDatabase.Infrastructure.EfCore.Repository
             this.dbSet = context.Set<TEntity>();
         }
 
+        public ICollection<TEntity> GetAll()
+        {
+            return dbSet.ToList();
+        }
+
         public TEntity GetById(int id)
         {
             return dbSet.Find(id);
